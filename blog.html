@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Insights — AGZUS Technology Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+<link rel="stylesheet" href="assets/site.css" />
+</head>
+<body class="has-floating-nav">
+
+<div class="nav-wrap">
+  <nav class="nav-pill">
+    <a href="index.html" class="nav-logo" aria-label="AGZUS home"><img src="assets/logo.png" alt="ATS"/></a>
+    <a class="nav-link" href="services.html">Services</a>
+    <a class="nav-link" href="solutions.html">Solutions</a>
+    <a class="nav-link" href="case-studies.html">Work</a>
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-cta" href="contact.html">Get in touch
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </a>
+  </nav>
+</div>
+
+<main class="w-full flex flex-col items-center px-4 md:px-6 pt-8">
+
+  <!-- HERO -->
+  <section class="theme-dark relative w-full max-w-[1400px] mx-auto rounded-[48px] overflow-hidden border border-white/[0.06] shadow-[0_60px_120px_-30px_rgba(0,0,0,0.6)]">
+    <!-- per-hero tubes background -->
+    <div class="hero-tubes-wrap"><canvas class="hero-tubes-canvas"></canvas></div>
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(34,211,238,0.18), transparent 55%), radial-gradient(circle at 80% 80%, rgba(239,68,68,0.20), transparent 55%), rgba(5,9,23,0.7);"></div>
+      <div class="aurora"></div>
+      <div class="absolute inset-0 bg-grid bg-grid-fade opacity-30"></div>
+    </div>
+    <div class="relative z-10 px-8 md:px-16 py-24 md:py-32">
+      <div class="anim-fade-up font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--red)]">/ Insights</div>
+      <h1 class="anim-fade-up delay-100 font-display text-[48px] md:text-[80px] font-medium tracking-tight text-white mt-4 leading-[0.98] max-w-[1000px]">
+        Field notes from the<br/>
+        <span class="gradient-text-red">engineering bench.</span>
+      </h1>
+      <p class="anim-fade-up delay-200 mt-8 max-w-[640px] text-[15px] md:text-[16.5px] leading-relaxed text-slate-300">
+        Writing about platforms we build, decisions we got wrong, and patterns we've
+        seen working at scale.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURED POST -->
+  <section class="relative w-full max-w-[1400px] mx-auto mt-24 px-4 md:px-6">
+    <a href="#" class="theme-dark reveal card-glow overflow-hidden block group h-[480px] relative">
+      <div class="absolute inset-0">
+        <div class="w-full h-full" style="background: radial-gradient(circle at 30% 30%, rgba(239,68,68,0.45), transparent 55%), radial-gradient(circle at 80% 80%, rgba(34,211,238,0.35), transparent 55%), rgba(5,9,23,0.7);"></div>
+        <div class="absolute inset-0 bg-grid opacity-30"></div>
+      </div>
+      <div class="relative h-full flex flex-col justify-between p-10 md:p-14">
+        <div class="flex items-center gap-2"><span class="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-300">/ Featured · Engineering · 12 min read</span></div>
+        <div>
+          <h2 class="font-display text-[32px] md:text-[44px] font-medium text-white leading-[1.1] max-w-[820px]">The quiet cost of microservices: what we learned rebuilding three monoliths back into one.</h2>
+          <p class="mt-5 text-[14.5px] text-slate-300 max-w-[640px]">Microservices win until they don't. Here's the framework we use to decide when the operational tax outweighs the autonomy.</p>
+          <div class="mt-8 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full" style="background: linear-gradient(135deg,#22d3ee,#0ea5e9);"></div>
+            <div>
+              <div class="text-white text-[13px] font-medium">Ravi Krishnan</div>
+              <div class="text-slate-400 text-[11.5px]">May 18, 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- POST GRID -->
+  <section class="relative w-full max-w-[1400px] mx-auto mt-12 px-4 md:px-6">
+    <div class="reveal flex items-center gap-2 mb-8 flex-wrap">
+      <button class="px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-white/15 text-white text-[12px] font-semibold">All</button>
+      <button class="px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-slate-400 text-[12px] font-semibold hover:text-white transition">Engineering</button>
+      <button class="px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-slate-400 text-[12px] font-semibold hover:text-white transition">AI</button>
+      <button class="px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-slate-400 text-[12px] font-semibold hover:text-white transition">Design</button>
+      <button class="px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-slate-400 text-[12px] font-semibold hover:text-white transition">Operations</button>
+      <button class="px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-slate-400 text-[12px] font-semibold hover:text-white transition">Culture</button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- post -->
+      <a href="#" class="reveal card-glow overflow-hidden block group">
+        <div class="h-44 relative overflow-hidden" style="background: linear-gradient(135deg,#ef4444 0%, #b91c1c 60%, #0a152d 100%);">
+          <div class="absolute inset-0 bg-grid opacity-30"></div>
+        </div>
+        <div class="p-7">
+          <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--red)]">AI · 8 min</div>
+          <h3 class="font-display text-[20px] font-medium text-white mt-3 leading-snug">Evals before agents: shipping LLM features that don't embarrass you.</h3>
+          <p class="mt-3 text-[12.5px] text-slate-400 leading-relaxed">If you can't measure it, you can't ship it. A practical eval harness for production teams.</p>
+        </div>
+      </a>
+      <a href="#" class="reveal delay-100 card-glow overflow-hidden block">
+        <div class="h-44 relative overflow-hidden" style="background: linear-gradient(135deg,#22d3ee 0%, #0ea5e9 60%, #0a152d 100%);">
+          <div class="absolute inset-0 bg-grid opacity-30"></div>
+        </div>
+        <div class="p-7">
+          <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--red)]">Engineering · 6 min</div>
+          <h3 class="font-display text-[20px] font-medium text-white mt-3 leading-snug">Postgres is the answer. What was the question?</h3>
+          <p class="mt-3 text-[12.5px] text-slate-400 leading-relaxed">Most "we need a new database" conversations end here. Here's why.</p>
+        </div>
+      </a>
+      <a href="#" class="reveal delay-200 card-glow overflow-hidden block">
+        <div class="h-44 relative overflow-hidden" style="background: linear-gradient(135deg,#a78bfa 0%, #6366f1 60%, #0a152d 100%);">
+          <div class="absolute inset-0 bg-grid opacity-30"></div>
+        </div>
+        <div class="p-7">
+          <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--red)]">Design · 5 min</div>
+          <h3 class="font-display text-[20px] font-medium text-white mt-3 leading-snug">Designing for tools nobody wants to use.</h3>
+          <p class="mt-3 text-[12.5px] text-slate-400 leading-relaxed">Internal tools deserve the same care as your front door. Five patterns we keep returning to.</p>
+        </div>
+      </a>
+      <a href="#" class="reveal card-glow overflow-hidden block">
+        <div class="h-44 relative overflow-hidden" style="background: linear-gradient(135deg,#fbbf24 0%, #ea580c 60%, #0a152d 100%);">
+          <div class="absolute inset-0 bg-grid opacity-30"></div>
+        </div>
+        <div class="p-7">
+          <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--red)]">Operations · 7 min</div>
+          <h3 class="font-display text-[20px] font-medium text-white mt-3 leading-snug">On-call rotations that don't burn people out.</h3>
+          <p class="mt-3 text-[12.5px] text-slate-400 leading-relaxed">The shape, cadence and rewards of an on-call practice that retains.</p>
+        </div>
+      </a>
+      <a href="#" class="reveal delay-100 card-glow overflow-hidden block">
+        <div class="h-44 relative overflow-hidden" style="background: linear-gradient(135deg,#84cc16 0%, #16a34a 60%, #0a152d 100%);">
+          <div class="absolute inset-0 bg-grid opacity-30"></div>
+        </div>
+        <div class="p-7">
+          <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--red)]">Engineering · 10 min</div>
+          <h3 class="font-display text-[20px] font-medium text-white mt-3 leading-snug">A pragmatic guide to multi-region failover.</h3>
+          <p class="mt-3 text-[12.5px] text-slate-400 leading-relaxed">When DR plans meet reality. The chapter you actually need.</p>
+        </div>
+      </a>
+      <a href="#" class="reveal delay-200 card-glow overflow-hidden block">
+        <div class="h-44 relative overflow-hidden" style="background: linear-gradient(135deg,#ec4899 0%, #be185d 60%, #0a152d 100%);">
+          <div class="absolute inset-0 bg-grid opacity-30"></div>
+        </div>
+        <div class="p-7">
+          <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--red)]">Culture · 4 min</div>
+          <h3 class="font-display text-[20px] font-medium text-white mt-3 leading-snug">Hiring for taste — and how to interview for it.</h3>
+          <p class="mt-3 text-[12.5px] text-slate-400 leading-relaxed">Taste is a skill. Like all skills, you can evaluate it. Here's our loop.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
+    <div class="reveal relative rounded-[40px] overflow-hidden border border-white/[0.06] bg-[var(--bg-card)] p-10 md:p-16">
+      <div class="aurora"></div>
+      <div class="relative grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--cyan)]">/ Newsletter</div>
+          <h2 class="font-display text-[36px] md:text-[44px] font-medium tracking-tight text-white mt-3 leading-[1.05]">
+            Field notes, <span class="gradient-text-red">monthly.</span>
+          </h2>
+          <p class="mt-4 text-[14px] text-slate-400 max-w-[440px] leading-relaxed">Long-form essays, runbooks and the occasional architecture diagram — one email a month.</p>
+        </div>
+        <form class="flex gap-2 items-center" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="you@company.com" class="flex-1 bg-white/[0.04] border border-white/10 rounded-full px-5 py-3.5 text-[14px] text-white placeholder:text-slate-500 focus:outline-none focus:border-white/30 transition" />
+          <button class="btn-primary inline-flex items-center gap-1.5">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer mt-32 w-full">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 py-16 grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-white p-1.5 flex items-center justify-center"><img src="assets/logo.png" alt="AGZUS" class="w-full h-full object-contain"/></div>
+          <div><div class="font-display text-white text-[15px] font-medium">AGZUS</div><div class="font-mono text-[9.5px] uppercase tracking-[0.2em] text-slate-500">Technology Solutions</div></div>
+        </div>
+        <p class="mt-6 text-[13.5px] text-slate-400 max-w-[360px] leading-relaxed">Engineering the foundation of a modern, intelligent enterprise.</p>
+      </div>
+      <div class="md:col-span-2"><div class="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500 mb-4">Company</div><ul class="space-y-2.5 text-[13.5px] text-slate-300"><li><a class="hover:text-white transition" href="about.html">About</a></li><li><a class="hover:text-white transition" href="careers.html">Careers</a></li><li><a class="hover:text-white transition" href="blog.html">Blog</a></li><li><a class="hover:text-white transition" href="contact.html">Contact</a></li></ul></div>
+      <div class="md:col-span-2"><div class="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500 mb-4">Practice</div><ul class="space-y-2.5 text-[13.5px] text-slate-300"><li><a class="hover:text-white transition" href="services.html">Services</a></li><li><a class="hover:text-white transition" href="solutions.html">Solutions</a></li><li><a class="hover:text-white transition" href="case-studies.html">Case studies</a></li></ul></div>
+      <div class="md:col-span-3"><div class="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500 mb-4">Reach us</div><ul class="space-y-2.5 text-[13.5px] text-slate-300"><li>hello@agzus.tech</li><li>+91 — — — — — —</li><li>Bengaluru · Dubai · London</li></ul></div>
+    </div>
+    <div class="border-t border-white/[0.05]"><div class="max-w-[1400px] mx-auto px-6 md:px-10 py-6 flex items-center justify-between text-[12px] text-slate-500"><div>© 2026 AGZUS Technology Solutions. All rights reserved.</div><div class="font-mono uppercase tracking-[0.2em]">v2026.05</div></div></div>
+  </footer>
+
+</main>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
