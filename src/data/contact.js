@@ -1,27 +1,9 @@
 export const offices = [
   {
     tag: '/ HQ',
-    city: 'Bengaluru',
-    address: 'Indiranagar, 12th Main\nBengaluru 560038, India',
+    city: 'Puducherry',
+    address: 'NO.1, Main Rd, Mettupalayam\nMarie Oulgaret, Puducherry, 605009',
     hours: 'Mon–Fri · 09:30 – 19:00 IST',
-  },
-  {
-    tag: '/ MEA',
-    city: 'Dubai',
-    address: 'DIFC Gate Avenue\nDubai, UAE',
-    hours: 'Sun–Thu · 09:00 – 18:00 GST',
-  },
-  {
-    tag: '/ EMEA',
-    city: 'London',
-    address: 'Shoreditch, EC2A\nLondon, United Kingdom',
-    hours: 'Mon–Fri · 09:00 – 18:00 GMT',
-  },
-  {
-    tag: '/ AMER',
-    city: 'Austin',
-    address: 'East 6th Street\nAustin, TX, USA',
-    hours: 'Mon–Fri · 09:00 – 18:00 CT',
   },
 ]
 
@@ -60,3 +42,10 @@ export const serviceChips = [
 export const budgetOptions = [
   'Not sure yet', '< $50k', '$50k – $150k', '$150k – $500k', '$500k+',
 ]
+
+export const contactInfo = {
+  email: 'info@agzus.com',
+  phone: '+91 8668052762',
+  address: 'NO.1, Main Rd, Mettupalayam, Marie Oulgaret, Puducherry, 605009',
+  careersEmail: 'careers@agzus.tech',
+}

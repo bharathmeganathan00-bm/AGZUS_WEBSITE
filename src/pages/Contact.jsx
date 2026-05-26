@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { usePageEffects } from '../hooks/usePageEffects'
 import { useHeroTubes } from '../hooks/useHeroTubes'
 import Footer from '../components/Footer'
-import { offices, faqs, serviceChips, budgetOptions } from '../data/contact'
+import { offices, faqs, serviceChips, budgetOptions, contactInfo } from '../data/contact'
 
 export default function Contact() {
   usePageEffects()
@@ -49,15 +49,15 @@ export default function Contact() {
             <div className="anim-fade-up delay-300 mt-10 space-y-5">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500 mb-2">Email</div>
-                <div className="text-white text-[15px]">hello@agzus.tech</div>
+                <div className="text-white text-[15px]">{contactInfo.email}</div>
               </div>
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500 mb-2">Careers</div>
-                <div className="text-white text-[15px]">careers@agzus.tech</div>
+                <div className="text-white text-[15px]">{contactInfo.careersEmail}</div>
               </div>
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500 mb-2">Phone</div>
-                <div className="text-white text-[15px]">+91 — — — — — —</div>
+                <div className="text-white text-[15px]">{contactInfo.phone}</div>
               </div>
             </div>
           </div>

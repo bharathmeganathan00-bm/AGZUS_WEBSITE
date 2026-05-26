@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { contactInfo } from '../data/contact'
 
 export default function Footer() {
   return (
@@ -41,9 +42,9 @@ export default function Footer() {
         <div className="md:col-span-3">
           <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500 mb-4">Reach us</div>
           <ul className="space-y-2.5 text-[13.5px] text-slate-300">
-            <li>hello@agzus.tech</li>
-            <li>+91 — — — — — —</li>
-            <li>Bengaluru · Dubai · London</li>
+            <li><a href={`mailto:${contactInfo.email}`} className="hover:text-white transition">{contactInfo.email}</a></li>
+            <li><a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="hover:text-white transition">{contactInfo.phone}</a></li>
+            <li>{contactInfo.address}</li>
           </ul>
         </div>
       </div>
