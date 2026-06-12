@@ -155,11 +155,13 @@ export function initScrollText() {
       const p = Math.max(0, Math.min(1, -r.top / total))
       const t = Math.max(0, Math.min(1, p / 0.5))
       const factor = 1 - t
+      const vw = window.innerWidth
+      const spread = center > 0 ? (vw * 0.28) / center : 0
       chars.forEach((ch, i) => {
         const d = i - center
-        const x = d * 50 * factor
-        const rotX = d * 50 * factor
-        ch.style.transform = `translate3d(${x}px,0,0) rotateX(${rotX}deg)`
+        const x = d * spread * factor
+        ch.style.transform = `translate3d(${x}px, 0, 0)`
+        ch.style.opacity = factor > 0 ? String(1 - factor * 0.4) : '1'
       })
     }
 

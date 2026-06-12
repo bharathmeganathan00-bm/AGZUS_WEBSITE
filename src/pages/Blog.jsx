@@ -25,7 +25,7 @@ export default function Blog() {
 
       {/* FEATURED POST */}
       <section className="relative w-full max-w-[1400px] mx-auto mt-24 px-4 md:px-6">
-        <a href="#" className="theme-dark reveal card-glow overflow-hidden block group h-[480px] relative">
+        <a href="#" className="theme-dark reveal card-glow overflow-hidden block group min-h-[280px] md:h-[480px] relative">
           <div className="absolute inset-0">
             <div
               className="w-full h-full"
@@ -33,7 +33,7 @@ export default function Blog() {
             />
             <div className="absolute inset-0 bg-grid opacity-30" />
           </div>
-          <div className="relative h-full flex flex-col justify-between p-10 md:p-14">
+          <div className="relative flex flex-col justify-between gap-6 p-6 sm:p-10 md:p-14" style={{ minHeight: 'inherit' }}>
             <div className="flex items-center gap-2">
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-300">
                 / Featured · {featuredPost.category} · {featuredPost.readTime}
@@ -99,13 +99,13 @@ export default function Blog() {
                 Long-form essays, runbooks and the occasional architecture diagram — one email a month.
               </p>
             </div>
-            <form className="flex gap-2 items-center" onSubmit={e => e.preventDefault()}>
+            <form className="flex flex-col sm:flex-row gap-3" onSubmit={e => e.preventDefault()}>
               <input
                 type="email"
                 placeholder="you@company.com"
                 className="flex-1 bg-white/[0.04] border border-white/10 rounded-full px-5 py-3.5 text-[14px] text-white placeholder:text-slate-500 focus:outline-none focus:border-white/30 transition"
               />
-              <button className="btn-primary inline-flex items-center gap-1.5">Subscribe</button>
+              <button className="btn-primary inline-flex items-center justify-center gap-1.5 sm:flex-shrink-0">Subscribe</button>
             </form>
           </div>
         </div>

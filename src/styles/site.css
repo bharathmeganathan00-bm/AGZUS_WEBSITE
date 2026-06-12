@@ -85,7 +85,7 @@
 }
 
 * { box-sizing: border-box; }
-html { background: var(--bg-deep); }
+html { background: var(--bg-deep); max-width: 100vw; overflow-x: hidden; }
 body {
   background: transparent;
   color: var(--t-1);
@@ -327,6 +327,102 @@ body .border-white\/30        { border-color: var(--u-border-strong); }
   text-decoration: none;
 }
 .nav-cta:hover { background: #f25555; transform: translateY(-1px); }
+
+/* Mobile hamburger button */
+.nav-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  background: rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.08);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+.nav-hamburger:hover { background: rgba(0,0,0,0.10); }
+
+.nav-ham-line {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: #0a0a0a;
+  border-radius: 9999px;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  transform-origin: center;
+}
+.nav-ham-line.open:first-child  { transform: translateY(6.5px) rotate(45deg); }
+.nav-ham-line.mid.open          { opacity: 0; transform: scaleX(0); }
+.nav-ham-line.open:last-child   { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile menu backdrop */
+.nav-mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(0,0,0,0.28);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Mobile slide-up sheet */
+.nav-mobile-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 58;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 0 -24px 60px -20px rgba(0,0,0,0.14);
+  padding: 8px 24px 52px;
+  transform: translateY(100%);
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.nav-mobile-sheet.is-open {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-mobile-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(0,0,0,0.13);
+  margin: 8px auto 20px;
+}
+
+.nav-mobile-link {
+  display: flex;
+  align-items: center;
+  min-height: 54px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1e293b;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: color 0.2s ease;
+  letter-spacing: -0.01em;
+}
+.nav-mobile-link:last-child { border-bottom: none; }
+.nav-mobile-link:hover,
+.nav-mobile-link.is-active { color: var(--red); }
+
+.nav-mobile-divider {
+  height: 1px;
+  background: rgba(0,0,0,0.07);
+  margin: 12px 0 0;
+}
 
 /* =========================================================
    GLASS CARDS (frosted, premium)
@@ -1296,26 +1392,15 @@ textarea.field-input { min-height: 140px; resize: vertical; }
     font-size: clamp(20px, 5vw, 32px);
   }
 
-  /* Navigation */
+  /* Navigation — on mobile only logo + hamburger visible */
   .nav-pill {
-    flex-wrap: wrap;
-    padding: 8px 10px;
-    gap: 6px;
+    padding: 6px;
+    gap: 4px;
   }
 
-  .nav-logo {
-    width: 36px;
-    height: 36px;
-  }
-
-  .nav-link {
-    font-size: 12px;
-    padding: 7px 12px;
-  }
-
-  .nav-cta {
-    font-size: 12px;
-    padding: 7px 12px;
+  /* MagneticButton — remove the hover-zone padding on touch screens */
+  .magnetic-wrap {
+    padding: 0 !important;
   }
 
   /* Main content */
@@ -1360,26 +1445,42 @@ textarea.field-input { min-height: 140px; resize: vertical; }
     gap: 12px !important;
   }
 
-  .card,
-  .card-glow,
-  .tilt {
+  /* Cards — reduce padding, tighten border-radius */
+  .card {
     padding: 16px !important;
     border-radius: 16px !important;
   }
+  /* Only override padding for card-glow/tilt that have explicit padding classes */
+  .card-glow.p-7,
+  .card-glow.p-8,
+  .card-glow.p-9,
+  .card-glow.p-10 {
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+  .tilt.p-7,
+  .tilt.p-8,
+  .tilt.p-9,
+  .tilt.p-10 {
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+  /* card-glow with p-0 stays at 0 (e.g. industry cards with edge-to-edge image) */
+  .card-glow.p-0 {
+    padding: 0 !important;
+  }
+  /* Inner content in industry cards */
+  .card-glow.p-0 > .tilt-inner > div.p-8 {
+    padding: 16px !important;
+  }
 
-  /* Buttons */
-  button,
+  /* Buttons — keep pill shape, just adjust size */
   .btn-primary,
   .btn-ghost {
     font-size: 13px !important;
-    padding: 10px 16px !important;
+    padding: 11px 20px !important;
     height: auto !important;
-    border-radius: 8px !important;
-  }
-
-  /* Remove MagneticButton padding on mobile for better UX */
-  button {
-    padding: 8px 14px !important;
+    border-radius: 9999px !important;
   }
 
   /* Form elements */
@@ -1422,7 +1523,7 @@ textarea.field-input { min-height: 140px; resize: vertical; }
   }
 
   .md\:grid-cols-4 {
-    grid-template-columns: 2fr 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
   .lg\:grid-cols-3 {
@@ -1485,7 +1586,7 @@ textarea.field-input { min-height: 140px; resize: vertical; }
   .mt-8 { margin-top: 16px !important; }
   .mt-12 { margin-top: 20px !important; }
   .mt-16 { margin-top: 24px !important; }
-  .mt-32 { margin-top: 28px !important; }
+  .mt-32 { margin-top: 48px !important; }
 
   /* Scroll text animation - reduce on mobile */
   .scroll-stage {
@@ -1496,7 +1597,7 @@ textarea.field-input { min-height: 140px; resize: vertical; }
     font-size: clamp(24px, 6vw, 60px) !important;
   }
 
-  /* Remove animations on very small devices if needed */
+  /* Entry animations — respect reduced motion / skip on small screens */
   .anim-fade-up {
     opacity: 1 !important;
     transform: none !important;
@@ -1507,7 +1608,35 @@ textarea.field-input { min-height: 140px; resize: vertical; }
     padding: 8px;
   }
 
-  /* Hide some desktop elements on mobile */
+  /* Glass card on mobile */
+  .glass-card {
+    border-radius: 14px !important;
+  }
+
+  /* Stat numbers — scale down */
+  .stat-num {
+    font-size: clamp(36px, 9vw, 60px) !important;
+  }
+
+  /* Industry card inner content */
+  .industry-card-image ~ .p-8,
+  .tilt-inner > div > .p-8 {
+    padding: 14px !important;
+  }
+
+  /* Chip tags — smaller on mobile */
+  .chip {
+    font-size: 11.5px !important;
+    padding: 7px 12px !important;
+  }
+
+  /* FAQ items */
+  details.py-6 {
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+  }
+
+  /* Hide desktop-only elements */
   .hidden.md\:block {
     display: none !important;
   }

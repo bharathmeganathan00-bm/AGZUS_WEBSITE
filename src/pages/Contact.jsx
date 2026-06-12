@@ -97,7 +97,7 @@ export default function Contact() {
           <div className="absolute inset-0 bg-grid bg-grid-fade opacity-30" />
         </div>
 
-        <div className="relative z-10 px-6 md:px-16 py-16 md:py-20 grid lg:grid-cols-12 gap-12">
+        <div className="relative z-10 px-4 sm:px-6 md:px-16 py-10 sm:py-16 md:py-20 grid lg:grid-cols-12 gap-8 md:gap-12">
 
           {/* LEFT */}
           <div className="lg:col-span-5">
@@ -199,28 +199,26 @@ export default function Contact() {
                   <textarea name="message" className="field-input" placeholder="What are you building, where are you stuck, and what does success look like?" required value={form.message} onChange={handleChange} />
                 </div>
 
-                <div className="mt-7 flex items-center justify-between gap-4 flex-wrap">
+                <div className="mt-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div className="text-[12px] text-slate-500">Sends to email + opens WhatsApp instantly.</div>
-                  <button type="submit" disabled={status === 'sending'} style={{ all: 'unset' }}>
-                    <MagneticButton variant="primary" size="md" className="inline-flex">
-                      {status === 'sending' ? (
-                        <>
-                          <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <circle cx="12" cy="12" r="10" strokeOpacity="0.25"/>
-                            <path d="M12 2a10 10 0 0 1 10 10" strokeLinecap="round"/>
-                          </svg>
-                          <span>Sending…</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Send brief</span>
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="m9 18 6-6-6-6"/>
-                          </svg>
-                        </>
-                      )}
-                    </MagneticButton>
-                  </button>
+                  <MagneticButton type="submit" variant="primary" size="md" disabled={status === 'sending'}>
+                    {status === 'sending' ? (
+                      <>
+                        <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <circle cx="12" cy="12" r="10" strokeOpacity="0.25"/>
+                          <path d="M12 2a10 10 0 0 1 10 10" strokeLinecap="round"/>
+                        </svg>
+                        <span>Sending…</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send brief</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="m9 18 6-6-6-6"/>
+                        </svg>
+                      </>
+                    )}
+                  </MagneticButton>
                 </div>
               </form>
             )}

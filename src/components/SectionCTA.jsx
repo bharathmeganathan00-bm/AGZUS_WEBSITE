@@ -10,7 +10,7 @@ const ChevronRight = () => (
 export default function SectionCTA({ title, primaryLabel, primaryTo, secondaryLabel, secondaryTo }) {
   return (
     <section className="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
-      <div className="reveal relative rounded-[40px] overflow-hidden border border-white/[0.06] bg-[var(--bg-card)] p-10 md:p-16 text-center">
+      <div className="reveal relative rounded-[20px] sm:rounded-[32px] md:rounded-[40px] overflow-hidden border border-white/[0.06] bg-[var(--bg-card)] p-6 sm:p-10 md:p-16 text-center">
         <div className="aurora" />
         <div className="absolute inset-0 bg-grid bg-grid-fade opacity-30" />
         <div className="relative">

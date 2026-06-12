@@ -50,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/[0.05]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-6 flex items-center justify-between text-[12px] text-slate-500">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-6 pb-24 md:pb-6 flex items-center justify-between flex-wrap gap-3 text-[12px] text-slate-500">
           <div>© 2026 AGZUS Technology Solutions. All rights reserved.</div>
           <div className="font-mono uppercase tracking-[0.2em]">v2026.05</div>
         </div>

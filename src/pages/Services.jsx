@@ -79,10 +79,10 @@ export default function Services() {
 
       {/* TECH STACK */}
       <section className="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
-        <div className="reveal card overflow-hidden rounded-[40px] px-8 md:px-16 py-16">
+        <div className="reveal card overflow-hidden rounded-[20px] sm:rounded-[32px] md:rounded-[40px] px-5 sm:px-8 md:px-16 py-10 sm:py-16">
           <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--cyan)]">/ 03 — Stack</div>
           <h2 className="font-display text-[36px] md:text-[48px] font-medium tracking-tight text-white mt-3 leading-[1.05] max-w-[640px]">Modern tools, chosen for fit not fashion.</h2>
-          <div className="mt-14 grid md:grid-cols-3 gap-10">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             <div>
               <div className="flex items-center gap-2.5 mb-5">
                 <div className="w-8 h-8 rounded-lg bg-[var(--cyan)]/10 border border-[var(--cyan)]/20 flex items-center justify-center text-[var(--cyan)] flex-shrink-0">
