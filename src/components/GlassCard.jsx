@@ -23,8 +23,13 @@ export default function GlassCard({ data, delay = '' }) {
       title: data.title,
       description: data.excerpt,
       tags: data.tags,
-      eyebrow: '/ Preview',
       href: data.href,
+      client: data.authorName,
+      industry: data.category,
+      year: data.year,
+      overview: data.overview,
+      whatWeDid: data.whatWeDid,
+      techStack: data.techStack,
     })
   }
 

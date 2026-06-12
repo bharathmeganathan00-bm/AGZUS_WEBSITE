@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { usePageEffects } from '../hooks/usePageEffects'
 import PageHero from '../components/PageHero'
 import Footer from '../components/Footer'
+import MagicBlogCard from '../components/MagicBlogCard'
+import MagneticButton from '../components/MagneticButton'
 import { featuredPost, posts, categories } from '../data/blog'
 
 export default function Blog() {
@@ -75,16 +77,11 @@ export default function Blog() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((post, i) => (
-            <a key={post.title} href="#" className={`reveal${i % 3 !== 0 ? ` delay-${(i % 3) * 100}` : ''} card-glow overflow-hidden block group`}>
-              <div className="h-44 relative overflow-hidden" style={{ background: post.gradient }}>
-                <div className="absolute inset-0 bg-grid opacity-30" />
-              </div>
-              <div className="p-7">
-                <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--red)]">{post.category} · {post.readTime}</div>
-                <h3 className="font-display text-[20px] font-medium text-white mt-3 leading-snug">{post.title}</h3>
-                <p className="mt-3 text-[12.5px] text-slate-400 leading-relaxed">{post.excerpt}</p>
-              </div>
-            </a>
+            <MagicBlogCard
+              key={post.title}
+              post={post}
+              delay={i % 3 !== 0 ? ` delay-${(i % 3) * 100}` : ''}
+            />
           ))}
         </div>
       </section>
@@ -103,13 +100,15 @@ export default function Blog() {
                 Long-form essays, runbooks and the occasional architecture diagram — one email a month.
               </p>
             </div>
-            <form className="flex gap-2 items-center" onSubmit={e => e.preventDefault()}>
+            <form className="flex flex-col sm:flex-row gap-3" onSubmit={e => e.preventDefault()}>
               <input
                 type="email"
                 placeholder="you@company.com"
                 className="flex-1 bg-white/[0.04] border border-white/10 rounded-full px-5 py-3.5 text-[14px] text-white placeholder:text-slate-500 focus:outline-none focus:border-white/30 transition"
               />
-              <button className="btn-primary inline-flex items-center gap-1.5">Subscribe</button>
+              <MagneticButton className="flex-shrink-0">
+                <button className="btn-primary inline-flex items-center justify-center gap-1.5 w-full sm:w-auto">Subscribe</button>
+              </MagneticButton>
             </form>
           </div>
         </div>

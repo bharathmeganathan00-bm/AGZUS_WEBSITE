@@ -28,8 +28,19 @@ export default function Solutions() {
             <div key={ind.num} className={`reveal${i % 3 !== 0 ? ` delay-${(i % 3) * 100}` : ''} tilt card-glow p-0 overflow-hidden`}>
               <div className="tilt-inner">
                 <div className="theme-dark h-40 relative overflow-hidden" style={{ background: ind.gradient }}>
-                  <div className="absolute inset-0 bg-grid opacity-30" />
-                  <div className="absolute bottom-4 left-6 font-mono text-[10px] uppercase tracking-[0.22em] text-white/80">{ind.num} / {ind.tag}</div>
+                  {ind.image && (
+                    <img
+                      src={ind.image}
+                      alt=""
+                      className="industry-card-image"
+                      loading="lazy"
+                      aria-hidden="true"
+                      onError={e => { e.target.style.display = 'none' }}
+                    />
+                  )}
+                  <div className="industry-card-overlay" style={{ background: ind.gradient }} />
+                  <div className="absolute inset-0 bg-grid opacity-20" style={{ zIndex: 3 }} />
+                  <div className="absolute bottom-4 left-6 font-mono text-[10px] uppercase tracking-[0.22em] text-white/80" style={{ zIndex: 4 }}>{ind.num} / {ind.tag}</div>
                 </div>
                 <div className="p-8">
                   <h3 className="font-display text-[22px] font-medium text-white">{ind.title}</h3>

@@ -62,22 +62,25 @@ export function initCounters() {
 }
 
 export function initTilt() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const isTouchDevice  = window.matchMedia('(hover: none)').matches
   const cards = document.querySelectorAll('.tilt')
   const handlers = []
   cards.forEach(card => {
-    const max = parseFloat(card.dataset.tilt || '10')
+    const max = (prefersReduced || isTouchDevice) ? 0 : parseFloat(card.dataset.tilt || '5')
+    if (max === 0) return
     const onMove = e => {
       const r = card.getBoundingClientRect()
       const px = (e.clientX - r.left) / r.width
       const py = (e.clientY - r.top) / r.height
       const rx = (0.5 - py) * max
       const ry = (px - 0.5) * max
-      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`
       card.style.setProperty('--mx', px * 100 + '%')
       card.style.setProperty('--my', py * 100 + '%')
     }
     const onLeave = () => {
-      card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)'
+      card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)'
     }
     card.addEventListener('mousemove', onMove)
     card.addEventListener('mouseleave', onLeave)

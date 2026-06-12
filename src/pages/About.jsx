@@ -56,19 +56,19 @@ export default function About() {
               <div key={t.year} className="reveal grid md:grid-cols-2 gap-6 md:gap-16 items-start relative">
                 {t.side === 'left' ? (
                   <>
-                    <div className="md:text-right md:pr-12">
+                    <div className="pl-8 md:pl-0 md:text-right md:pr-12">
                       <div className="font-mono text-[11px] uppercase tracking-[0.22em]" style={{ color: t.color }}>{t.year}</div>
                       <h4 className="font-display text-[24px] font-medium text-white mt-2">{t.title}</h4>
                       <p className="mt-2 text-[13.5px] text-slate-400 leading-relaxed">{t.desc}</p>
                     </div>
                     <div className="absolute left-4 md:left-1/2 -translate-x-1/2 mt-2 w-3 h-3 rounded-full ring-4 ring-[var(--bg-deep)]" style={{ background: t.color }} />
-                    <div />
+                    <div className="hidden md:block" />
                   </>
                 ) : (
                   <>
-                    <div />
+                    <div className="hidden md:block" />
                     <div className="absolute left-4 md:left-1/2 -translate-x-1/2 mt-2 w-3 h-3 rounded-full ring-4 ring-[var(--bg-deep)]" style={{ background: t.color }} />
-                    <div className="md:pl-12">
+                    <div className="pl-8 md:pl-12">
                       <div className="font-mono text-[11px] uppercase tracking-[0.22em]" style={{ color: t.color }}>{t.year}</div>
                       <h4 className="font-display text-[24px] font-medium text-white mt-2">{t.title}</h4>
                       <p className="mt-2 text-[13.5px] text-slate-400 leading-relaxed">{t.desc}</p>

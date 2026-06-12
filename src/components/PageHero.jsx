@@ -18,7 +18,7 @@ export default function PageHero({ eyebrow, title, subtitle, gradient }) {
         <div className="aurora" />
         <div className="absolute inset-0 bg-grid bg-grid-fade opacity-30" />
       </div>
-      <div className="relative z-10 px-8 md:px-16 py-24 md:py-32">
+      <div className="relative z-10 px-5 sm:px-8 md:px-16 py-12 sm:py-24 md:py-32">
         <div className="anim-fade-up font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--red)]">
           {eyebrow}
         </div>
@@ -26,7 +26,7 @@ export default function PageHero({ eyebrow, title, subtitle, gradient }) {
           className="anim-fade-up delay-100 font-display text-[48px] md:text-[80px] font-medium tracking-tight text-white mt-4 leading-[0.98] max-w-[1000px]"
           dangerouslySetInnerHTML={{ __html: title }}
         />
-        <p className="anim-fade-up delay-200 mt-8 max-w-[640px] text-[15px] md:text-[16.5px] leading-relaxed text-slate-300">
+        <p className="anim-fade-up delay-200 mt-6 sm:mt-8 max-w-[640px] text-[14px] sm:text-[15px] md:text-[16.5px] leading-relaxed text-slate-300">
           {subtitle}
         </p>
       </div>

@@ -11,6 +11,10 @@ export const caseStudies = [
     authorName: 'Mitrathina Sdn. Bhd.',
     authorSub: 'mitrathina.com',
     category: 'Construction',
+    year: '2024',
+    overview: 'A full-scale corporate website built for a Malaysia-based construction firm to establish their digital presence. The platform showcases their project portfolio, service offerings, and company milestones — crafted to attract regional clients and generate qualified leads.',
+    whatWeDid: ['UI/UX Design', 'Frontend Development', 'CMS Integration', 'Portfolio Showcase', 'SEO Optimization', 'Responsive Design'],
+    techStack: ['React', 'Tailwind CSS', 'PHP', 'MySQL', 'Vercel'],
   },
   {
     href: 'https://spagglobal.com/',
@@ -24,6 +28,10 @@ export const caseStudies = [
     authorName: 'SPAG Global',
     authorSub: 'spagglobal.com',
     category: 'RO & Water',
+    year: '2024',
+    overview: 'A product and e-commerce platform built for SPAG Global to market and sell reverse-osmosis purifiers and IoT-enabled automatic water-level controllers. Combines a smooth shopping experience with real-time device data, helping customers understand and purchase smart water solutions.',
+    whatWeDid: ['UI/UX Design', 'Frontend Development', 'Backend Development', 'E-commerce Setup', 'IoT Integration', 'API Integration', 'Responsive Design'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'IoT APIs', 'Stripe', 'Tailwind CSS'],
   },
   {
     href: 'https://velcarcare.com/',
@@ -37,6 +45,10 @@ export const caseStudies = [
     authorName: 'Velcar Care',
     authorSub: 'velcarcare.com',
     category: 'Automotive',
+    year: '2024',
+    overview: 'A booking-first website built for a multi-bay car mechanic workshop. The platform lets customers browse services, explore the gallery, and submit online appointment requests — reducing call volume and streamlining day-to-day workshop operations.',
+    whatWeDid: ['UI/UX Design', 'Frontend Development', 'Online Booking System', 'Gallery & Showcase', 'SEO Optimization', 'Responsive Design'],
+    techStack: ['React', 'Next.js', 'Tailwind CSS', 'Firebase', 'Google Maps API'],
   },
   {
     href: 'https://kanchiaquapure.com/',
@@ -50,6 +62,10 @@ export const caseStudies = [
     authorName: 'Kanchi Aquapure',
     authorSub: 'kanchiaquapure.com',
     category: 'RO & Water',
+    year: '2024',
+    overview: 'A catalogue and lead-generation site for an industrial-grade RO water purification specialist. The platform highlights product lines, technical specifications, and service capabilities — designed to convert research-stage buyers into qualified inquiries.',
+    whatWeDid: ['UI/UX Design', 'Frontend Development', 'Lead Gen Integration', 'Product Catalogue', 'SEO Optimization', 'Responsive Design'],
+    techStack: ['React', 'Tailwind CSS', 'Node.js', 'Nodemailer', 'Vercel'],
   },
   {
     href: 'https://tinytrailsexperience.com/',
@@ -63,6 +79,10 @@ export const caseStudies = [
     authorName: 'Tiny Trails',
     authorSub: 'tinytrailsexperience.com',
     category: 'Travel',
+    year: '2024',
+    overview: 'An adventure-experience platform built to inspire and convert outdoor enthusiasts. Features curated itineraries, seamless booking flows, and a visual storytelling layer that brings each trail to life — helping Tiny Trails stand out in a competitive travel market.',
+    whatWeDid: ['UI/UX Design', 'Frontend Development', 'Booking Integration', 'Visual Storytelling', 'Performance Optimization', 'Responsive Design'],
+    techStack: ['React', 'Next.js', 'Tailwind CSS', 'Stripe', 'Sanity CMS'],
   },
   {
     href: 'https://spag-quotation.netlify.app/',
@@ -76,6 +96,10 @@ export const caseStudies = [
     authorName: 'SPAG Global',
     authorSub: 'spag-quotation.netlify.app',
     category: 'Construction',
+    year: '2024',
+    overview: 'A purpose-built SaaS quotation tool designed for sales teams to create, manage, and send professional quotes in minutes. Features line-item management, tax calculation, PDF generation, and a dedicated customer portal for streamlined quote approvals.',
+    whatWeDid: ['UI/UX Design', 'Frontend Development', 'Backend Development', 'PDF Generation', 'Customer Portal', 'SaaS Architecture'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'PDF.js', 'JWT Auth', 'Tailwind CSS'],
   },
   {
     href: 'https://spag-inventory.netlify.app/',
@@ -89,6 +113,10 @@ export const caseStudies = [
     authorName: 'SPAG Global',
     authorSub: 'spag-inventory.netlify.app',
     category: 'Construction',
+    year: '2024',
+    overview: 'A full-featured inventory management system built for operations teams. Supports stock movements, batch and expiry tracking, multi-warehouse management, and detailed reporting — giving teams real-time visibility over their entire supply chain.',
+    whatWeDid: ['UI/UX Design', 'Frontend Development', 'Backend Development', 'Multi-warehouse Logic', 'Reporting Dashboard', 'SaaS Architecture'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'Chart.js', 'JWT Auth', 'Tailwind CSS'],
   },
 ]
 

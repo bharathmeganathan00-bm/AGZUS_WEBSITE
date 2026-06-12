@@ -3,6 +3,8 @@ import PageHero from '../components/PageHero'
 import SectionCTA from '../components/SectionCTA'
 import Footer from '../components/Footer'
 import { allServices, processSteps, techStack } from '../data/services'
+import { serviceIllustrations } from '../data/serviceIllustrations'
+import { techIcons } from '../data/techIcons'
 
 export default function Services() {
   usePageEffects()
@@ -27,8 +29,18 @@ export default function Services() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {allServices.map((svc, i) => (
-            <div key={svc.num} className={`reveal${i % 3 !== 0 ? ` delay-${(i % 3) * 100}` : ''} tilt card-glow p-8`}>
-              <div className="tilt-inner">
+            <div key={svc.num} className={`reveal${i % 3 !== 0 ? ` delay-${(i % 3) * 100}` : ''} tilt card-glow p-8`} style={{ overflow: 'hidden' }}>
+              {serviceIllustrations[svc.num] && (
+                <img
+                  src={serviceIllustrations[svc.num]}
+                  alt=""
+                  className="service-card-bg"
+                  loading="lazy"
+                  aria-hidden="true"
+                  onError={e => { e.target.style.display = 'none' }}
+                />
+              )}
+              <div className="tilt-inner service-card-content">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-[var(--red)] bg-white/[0.03]">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" dangerouslySetInnerHTML={{ __html: svc.icon }} />
@@ -72,26 +84,56 @@ export default function Services() {
           <h2 className="font-display text-[36px] md:text-[48px] font-medium tracking-tight text-white mt-3 leading-[1.05] max-w-[640px]">Modern tools, chosen for fit not fashion.</h2>
           <div className="mt-14 grid md:grid-cols-3 gap-10">
             <div>
-              <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500 mb-4">Frontend</div>
-              <div className="flex flex-wrap gap-2 text-[12.5px]">
+              <div className="flex items-center gap-2.5 mb-5">
+                <div className="w-8 h-8 rounded-lg bg-[var(--cyan)]/10 border border-[var(--cyan)]/20 flex items-center justify-center text-[var(--cyan)] flex-shrink-0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>
+                  </svg>
+                </div>
+                <div className="font-mono text-[12px] uppercase tracking-[0.18em] text-slate-300 font-medium">Frontend</div>
+              </div>
+              <div className="flex flex-wrap gap-2.5">
                 {techStack.frontend.map(t => (
-                  <span key={t} className="px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-slate-300">{t}</span>
+                  <span key={t} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-slate-200 text-[14px]">
+                    {techIcons[t] && <img src={techIcons[t]} alt="" width="15" height="15" className="flex-shrink-0" loading="lazy" aria-hidden="true" onError={e => { e.target.style.display = 'none' }} />}
+                    {t}
+                  </span>
                 ))}
               </div>
             </div>
             <div>
-              <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500 mb-4">Backend &amp; Data</div>
-              <div className="flex flex-wrap gap-2 text-[12.5px]">
+              <div className="flex items-center gap-2.5 mb-5">
+                <div className="w-8 h-8 rounded-lg bg-[var(--red)]/10 border border-[var(--red)]/20 flex items-center justify-center text-[var(--red)] flex-shrink-0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                  </svg>
+                </div>
+                <div className="font-mono text-[12px] uppercase tracking-[0.18em] text-slate-300 font-medium">Backend &amp; Data</div>
+              </div>
+              <div className="flex flex-wrap gap-2.5">
                 {techStack.backend.map(t => (
-                  <span key={t} className="px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-slate-300">{t}</span>
+                  <span key={t} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-slate-200 text-[14px]">
+                    {techIcons[t] && <img src={techIcons[t]} alt="" width="15" height="15" className="flex-shrink-0" loading="lazy" aria-hidden="true" onError={e => { e.target.style.display = 'none' }} />}
+                    {t}
+                  </span>
                 ))}
               </div>
             </div>
             <div>
-              <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500 mb-4">Cloud &amp; AI</div>
-              <div className="flex flex-wrap gap-2 text-[12.5px]">
+              <div className="flex items-center gap-2.5 mb-5">
+                <div className="w-8 h-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 flex-shrink-0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                  </svg>
+                </div>
+                <div className="font-mono text-[12px] uppercase tracking-[0.18em] text-slate-300 font-medium">Cloud &amp; AI</div>
+              </div>
+              <div className="flex flex-wrap gap-2.5">
                 {techStack.cloud.map(t => (
-                  <span key={t} className="px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-slate-300">{t}</span>
+                  <span key={t} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-slate-200 text-[14px]">
+                    {techIcons[t] && <img src={techIcons[t]} alt="" width="15" height="15" className="flex-shrink-0" loading="lazy" aria-hidden="true" onError={e => { e.target.style.display = 'none' }} />}
+                    {t}
+                  </span>
                 ))}
               </div>
             </div>
