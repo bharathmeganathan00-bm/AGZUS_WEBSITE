@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react'
 import { usePageEffects } from '../hooks/usePageEffects'
 import { useHeroTubes } from '../hooks/useHeroTubes'
-import Footer from '../components/Footer'
 import MagneticButton from '../components/MagneticButton'
+import Footer from '../components/Footer'
 import { offices, faqs, serviceChips, contactInfo } from '../data/contact'
 
 const TO_EMAIL     = 'info@agzus.com'
@@ -199,28 +199,28 @@ export default function Contact() {
                   <textarea name="message" className="field-input" placeholder="What are you building, where are you stuck, and what does success look like?" required value={form.message} onChange={handleChange} />
                 </div>
 
-                <div className="mt-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="mt-7 flex items-center justify-between gap-4 flex-wrap">
                   <div className="text-[12px] text-slate-500">Sends to email + opens WhatsApp instantly.</div>
-                  <MagneticButton>
-                    <button className="btn-primary inline-flex items-center gap-1.5" type="submit" disabled={status === 'sending'}>
+                  <button type="submit" disabled={status === 'sending'} style={{ all: 'unset' }}>
+                    <MagneticButton variant="primary" size="md" className="inline-flex">
                       {status === 'sending' ? (
                         <>
                           <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                             <circle cx="12" cy="12" r="10" strokeOpacity="0.25"/>
                             <path d="M12 2a10 10 0 0 1 10 10" strokeLinecap="round"/>
                           </svg>
-                          Sending…
+                          <span>Sending…</span>
                         </>
                       ) : (
                         <>
-                          Send brief
+                          <span>Send brief</span>
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
                             <path d="m9 18 6-6-6-6"/>
                           </svg>
                         </>
                       )}
-                    </button>
-                  </MagneticButton>
+                    </MagneticButton>
+                  </button>
                 </div>
               </form>
             )}

@@ -3,7 +3,6 @@ import { usePageEffects } from '../hooks/usePageEffects'
 import PageHero from '../components/PageHero'
 import Footer from '../components/Footer'
 import MagicBlogCard from '../components/MagicBlogCard'
-import MagneticButton from '../components/MagneticButton'
 import { featuredPost, posts, categories } from '../data/blog'
 
 export default function Blog() {
@@ -100,15 +99,13 @@ export default function Blog() {
                 Long-form essays, runbooks and the occasional architecture diagram — one email a month.
               </p>
             </div>
-            <form className="flex flex-col sm:flex-row gap-3" onSubmit={e => e.preventDefault()}>
+            <form className="flex gap-2 items-center" onSubmit={e => e.preventDefault()}>
               <input
                 type="email"
                 placeholder="you@company.com"
                 className="flex-1 bg-white/[0.04] border border-white/10 rounded-full px-5 py-3.5 text-[14px] text-white placeholder:text-slate-500 focus:outline-none focus:border-white/30 transition"
               />
-              <MagneticButton className="flex-shrink-0">
-                <button className="btn-primary inline-flex items-center justify-center gap-1.5 w-full sm:w-auto">Subscribe</button>
-              </MagneticButton>
+              <button className="btn-primary inline-flex items-center gap-1.5">Subscribe</button>
             </form>
           </div>
         </div>

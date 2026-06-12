@@ -18,15 +18,15 @@ export default function PageHero({ eyebrow, title, subtitle, gradient }) {
         <div className="aurora" />
         <div className="absolute inset-0 bg-grid bg-grid-fade opacity-30" />
       </div>
-      <div className="relative z-10 px-5 sm:px-8 md:px-16 py-12 sm:py-24 md:py-32">
-        <div className="anim-fade-up font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--red)]">
+      <div className="relative z-10 px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+        <div className="anim-fade-up font-mono text-[10px] md:text-[11px] uppercase tracking-[0.22em] text-[var(--red)]">
           {eyebrow}
         </div>
         <h1
-          className="anim-fade-up delay-100 font-display text-[48px] md:text-[80px] font-medium tracking-tight text-white mt-4 leading-[0.98] max-w-[1000px]"
+          className="anim-fade-up delay-100 font-display text-[32px] sm:text-[40px] md:text-[56px] lg:text-[80px] font-medium tracking-tight text-white mt-4 leading-[1.05] md:leading-[0.98] max-w-[1000px]"
           dangerouslySetInnerHTML={{ __html: title }}
         />
-        <p className="anim-fade-up delay-200 mt-6 sm:mt-8 max-w-[640px] text-[14px] sm:text-[15px] md:text-[16.5px] leading-relaxed text-slate-300">
+        <p className="anim-fade-up delay-200 mt-6 md:mt-8 max-w-[640px] text-[14px] md:text-[15px] lg:text-[16.5px] leading-relaxed text-slate-300">
           {subtitle}
         </p>
       </div>

@@ -28,7 +28,7 @@ export default function Home() {
     <main className="w-full flex flex-col items-center px-4 md:px-6 pt-8">
 
       {/* HERO */}
-      <section className="theme-dark relative w-full max-w-[1400px] mx-auto rounded-[48px] overflow-hidden h-auto md:h-[640px] min-h-[500px] flex flex-col border border-white/[0.06] shadow-[0_60px_120px_-30px_rgba(0,0,0,0.6)]">
+      <section className="theme-dark relative w-full max-w-[1400px] mx-auto rounded-[48px] overflow-hidden h-[640px] flex flex-col border border-white/[0.06] shadow-[0_60px_120px_-30px_rgba(0,0,0,0.6)]">
         <div className="hero-tubes-wrap">
           <canvas ref={canvasRef} className="hero-tubes-canvas" />
         </div>
@@ -36,24 +36,24 @@ export default function Home() {
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(100deg, rgba(5,9,23,0.82) 0%, rgba(5,9,23,0.62) 35%, rgba(5,9,23,0.35) 55%, rgba(5,9,23,0.05) 80%, rgba(5,9,23,0) 100%)' }} />
         </div>
 
-        <div className="anim-fade-up delay-100 relative z-20 px-5 sm:px-8 md:px-16 pt-8 sm:pt-10 flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.18em] text-slate-400">
+        <div className="anim-fade-up delay-100 relative z-20 px-8 md:px-16 pt-10 flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.18em] text-slate-400">
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--red)] pulse-dot" />
           <span>AGZUS / ats.systems / v2026.05</span>
           <span className="hidden md:inline mx-2 text-slate-700">•</span>
           <span className="hidden md:inline">Engineering tomorrow's enterprise, today.</span>
         </div>
 
-        <div className="anim-fade-up delay-200 relative z-20 flex-1 px-5 sm:px-8 md:px-16 pt-6 sm:pt-8 md:pt-10 pb-10 flex flex-col items-start">
-          <h1 className="font-display text-[44px] md:text-[64px] font-medium tracking-tight leading-[1.02] text-white max-w-[700px]">
+        <div className="anim-fade-up delay-200 relative z-20 flex-1 px-8 md:px-16 pt-8 md:pt-10 flex flex-col items-start">
+          <h1 className="font-display text-[44px] md:text-[64px] font-medium tracking-tight leading-[1.02] text-white">
             Foundation of the<br />
             <span className="gradient-text-red">new digital epoch.</span>
           </h1>
-          <p className="mt-5 sm:mt-6 max-w-[600px] text-[14px] md:text-[15px] leading-relaxed text-slate-400">
+          <p className="mt-6 max-w-[600px] text-[14px] md:text-[15px] leading-relaxed text-slate-400">
             AGZUS Technology Solutions designs products, powers ecosystems and engineers
             the foundation of a modern, intelligent enterprise — for builders, operators
             and communities alike.
           </p>
-          <div className="mt-7 sm:mt-9 flex flex-wrap items-center gap-3">
+          <div className="mt-9 flex items-center gap-3">
             <MagneticButton>
               <Link to="/contact" className="btn-primary inline-flex items-center gap-1.5">
                 Start a project <ChevronRight />
@@ -142,7 +142,7 @@ export default function Home() {
 
       {/* STATS */}
       <section className="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
-        <div className="relative card overflow-hidden rounded-[40px] px-5 sm:px-8 md:px-16 py-12 sm:py-16 md:py-20">
+        <div className="relative card overflow-hidden rounded-[40px] px-8 md:px-16 py-16 md:py-20">
           <div className="aurora" />
           <div className="absolute inset-0 bg-grid bg-grid-fade opacity-40" />
           <div className="relative reveal max-w-[680px]">
@@ -255,7 +255,7 @@ export default function Home() {
 
       {/* CTA */}
       <section className="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
-        <div className="reveal relative rounded-[40px] overflow-hidden border border-white/[0.06] bg-[var(--bg-card)] p-6 sm:p-10 md:p-16 text-center">
+        <div className="reveal relative rounded-[40px] overflow-hidden border border-white/[0.06] bg-[var(--bg-card)] p-10 md:p-16 text-center">
           <div className="aurora" />
           <div className="absolute inset-0 bg-grid bg-grid-fade opacity-30" />
           <div className="relative">
@@ -263,10 +263,10 @@ export default function Home() {
             <h2 className="font-display text-[44px] md:text-[64px] font-medium tracking-tight text-white mt-4 leading-[1.05]">
               Ready to engineer<br /><span className="gradient-text-red">your next decade?</span>
             </h2>
-            <p className="mt-5 sm:mt-6 text-[14px] sm:text-[14.5px] text-slate-400 max-w-[520px] mx-auto">
+            <p className="mt-6 text-[14.5px] text-slate-400 max-w-[520px] mx-auto">
               Tell us what you're building. We'll get back within one business day with a plan.
             </p>
-            <div className="mt-7 sm:mt-9 flex items-center justify-center gap-3 flex-wrap">
+            <div className="mt-9 flex items-center justify-center gap-3 flex-wrap">
               <MagneticButton>
                 <Link to="/contact" className="btn-primary inline-flex items-center gap-1.5">
                   Start a project <ChevronRight />

@@ -1,52 +1,113 @@
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { motion, useSpring, useTransform } from 'framer-motion'
 
-export default function MagneticButton({ children, strength = 0.38, radius = 80, className = '' }) {
-  const ref = useRef(null)
-  const [hovered, setHovered] = useState(false)
+/**
+ * MagneticButton - An interactive button with magnetic cursor following effect
+ * @param {React.ReactNode} children - Button label or children
+ * @param {number} strength - How strongly the button attracts (0–1, default 0.4)
+ * @param {number} radius - Pixel radius in which magnetism activates
+ * @param {string} variant - Visual variant: "primary" | "outline" | "ghost" | "dark"
+ * @param {string} size - Size: "sm" | "md" | "lg"
+ * @param {Function} onClick - onClick handler
+ * @param {string} className - Additional classes
+ */
+export default function MagneticButton({
+  children,
+  strength = 0.4,
+  radius = 80,
+  variant = 'primary',
+  size = 'md',
+  onClick,
+  className = '',
+}) {
+  const buttonRef = useRef(null)
+  const [isHovered, setIsHovered] = useState(false)
 
-  const cfg = { stiffness: 220, damping: 20, mass: 0.5 }
-  const rawX = useSpring(0, cfg)
-  const rawY = useSpring(0, cfg)
-  const innerX = useTransform(rawX, v => v * 0.35)
-  const innerY = useTransform(rawY, v => v * 0.35)
+  // Spring config — snappy but elastic
+  const springConfig = { stiffness: 200, damping: 18, mass: 0.6 }
 
-  const pad = radius * 0.22
+  const rawX = useSpring(0, springConfig)
+  const rawY = useSpring(0, springConfig)
 
-  const onMove = e => {
-    const rect = ref.current?.getBoundingClientRect()
+  // Inner text moves slightly less than the container (parallax depth)
+  const textX = useTransform(rawX, (v) => v * 0.4)
+  const textY = useTransform(rawY, (v) => v * 0.4)
+
+  const handleMouseMove = (e) => {
+    // Reduce magnetic radius on mobile
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640
+    const effectiveRadius = isMobile ? radius * 0.6 : radius
+    
+    const rect = buttonRef.current?.getBoundingClientRect()
     if (!rect) return
-    const dx = e.clientX - (rect.left + rect.width / 2)
-    const dy = e.clientY - (rect.top + rect.height / 2)
-    if (Math.sqrt(dx * dx + dy * dy) < radius) {
-      rawX.set(dx * strength)
-      rawY.set(dy * strength)
-      setHovered(true)
+
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+
+    const distX = e.clientX - centerX
+    const distY = e.clientY - centerY
+    const dist = Math.sqrt(distX ** 2 + distY ** 2)
+
+    if (dist < effectiveRadius) {
+      rawX.set(distX * strength)
+      rawY.set(distY * strength)
+      setIsHovered(true)
     } else {
-      rawX.set(0); rawY.set(0); setHovered(false)
+      rawX.set(0)
+      rawY.set(0)
+      setIsHovered(false)
     }
   }
 
-  const onLeave = () => { rawX.set(0); rawY.set(0); setHovered(false) }
+  const handleMouseLeave = () => {
+    rawX.set(0)
+    rawY.set(0)
+    setIsHovered(false)
+  }
+
+  const variants = {
+    primary: 'bg-red-500 text-white hover:bg-red-600 shadow-lg shadow-red-500/20 transition-colors',
+    outline: 'border-2 border-slate-700 text-slate-900 hover:bg-slate-100/5 transition-colors',
+    ghost: 'text-slate-900 hover:bg-slate-900/8 transition-colors',
+    dark: 'bg-slate-900 text-white shadow-lg transition-colors',
+  }
+
+  const sizes = {
+    sm: 'h-9 px-5 text-sm rounded-full',
+    md: 'h-12 px-8 text-base rounded-full',
+    lg: 'h-14 px-12 text-lg rounded-full',
+  }
 
   return (
     <div
-      ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      className={`inline-flex ${className}`}
-      style={{ padding: pad, margin: -pad }}
+      ref={buttonRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ display: 'inline-flex', padding: radius * 0.25 }}
     >
-      <motion.div
-        style={{ x: rawX, y: rawY, position: 'relative' }}
-        animate={{ scale: hovered ? 1.04 : 1 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+      <motion.button
+        type="button"
+        onClick={onClick}
+        style={{ x: rawX, y: rawY }}
+        animate={{ scale: isHovered ? 1.04 : 1 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        className={`relative inline-flex items-center justify-center font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 overflow-hidden ${variants[variant]} ${sizes[size]} ${className}`}
       >
-        {/* children text shifts at a slightly smaller offset for depth */}
-        <motion.span style={{ x: innerX, y: innerY }} className="contents">
+        {/* Subtle inner glow on hover */}
+        <motion.span
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="pointer-events-none absolute inset-0 rounded-full bg-white/10"
+        />
+
+        {/* Text layer with slight parallax */}
+        <motion.span
+          style={{ x: textX, y: textY }}
+          className="relative z-10 flex items-center gap-2"
+        >
           {children}
         </motion.span>
-      </motion.div>
+      </motion.button>
     </div>
   )
 }
