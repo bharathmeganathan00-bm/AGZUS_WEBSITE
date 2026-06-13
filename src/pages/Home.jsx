@@ -28,7 +28,7 @@ export default function Home() {
     <main className="w-full flex flex-col items-center px-4 md:px-6 pt-8">
 
       {/* HERO */}
-      <section className="theme-dark relative w-full max-w-[1400px] mx-auto rounded-[48px] overflow-hidden min-h-[500px] md:h-[640px] flex flex-col border border-white/[0.06] shadow-[0_60px_120px_-30px_rgba(0,0,0,0.6)]">
+      <section className="theme-dark relative w-full max-w-[1400px] mx-auto rounded-[24px] sm:rounded-[36px] md:rounded-[48px] overflow-hidden min-h-[500px] md:h-[640px] flex flex-col border border-white/[0.06] shadow-[0_60px_120px_-30px_rgba(0,0,0,0.6)]">
         <div className="hero-tubes-wrap">
           <canvas ref={canvasRef} className="hero-tubes-canvas" />
         </div>

@@ -1388,10 +1388,6 @@ textarea.field-input { min-height: 140px; resize: vertical; }
     font-size: 14px;
   }
 
-  .font-display {
-    font-size: clamp(20px, 5vw, 32px);
-  }
-
   /* Navigation — on mobile only logo + hamburger visible */
   .nav-pill {
     padding: 6px;
@@ -1435,43 +1431,14 @@ textarea.field-input { min-height: 140px; resize: vertical; }
     line-height: 1.6 !important;
   }
 
-  /* Sections */
-  .reveal {
-    margin-top: 24px !important;
-  }
-
   /* Cards and grid layouts */
   .grid {
     gap: 12px !important;
   }
 
-  /* Cards — reduce padding, tighten border-radius */
-  .card {
-    padding: 16px !important;
-    border-radius: 16px !important;
-  }
-  /* Only override padding for card-glow/tilt that have explicit padding classes */
-  .card-glow.p-7,
-  .card-glow.p-8,
-  .card-glow.p-9,
-  .card-glow.p-10 {
-    padding: 16px !important;
-    border-radius: 16px !important;
-  }
-  .tilt.p-7,
-  .tilt.p-8,
-  .tilt.p-9,
-  .tilt.p-10 {
-    padding: 16px !important;
-    border-radius: 16px !important;
-  }
   /* card-glow with p-0 stays at 0 (e.g. industry cards with edge-to-edge image) */
   .card-glow.p-0 {
     padding: 0 !important;
-  }
-  /* Inner content in industry cards */
-  .card-glow.p-0 > .tilt-inner > div.p-8 {
-    padding: 16px !important;
   }
 
   /* Buttons — keep pill shape, just adjust size */
@@ -1522,10 +1489,6 @@ textarea.field-input { min-height: 140px; resize: vertical; }
     grid-template-columns: 1fr !important;
   }
 
-  .md\:grid-cols-4 {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
   .lg\:grid-cols-3 {
     grid-template-columns: 1fr !important;
   }
@@ -1560,14 +1523,6 @@ textarea.field-input { min-height: 140px; resize: vertical; }
     text-align: left !important;
   }
 
-  .md\:pr-12 {
-    padding-right: 0 !important;
-  }
-
-  .md\:pl-12 {
-    padding-left: 0 !important;
-  }
-
   /* Spacing utilities */
   .px-4 { padding-left: 12px !important; padding-right: 12px !important; }
   .px-6 { padding-left: 12px !important; padding-right: 12px !important; }
@@ -1597,10 +1552,10 @@ textarea.field-input { min-height: 140px; resize: vertical; }
     font-size: clamp(24px, 6vw, 60px) !important;
   }
 
-  /* Entry animations — respect reduced motion / skip on small screens */
+  /* Entry animations — disable on small screens; do NOT set transform to avoid positioning side-effects */
   .anim-fade-up {
     opacity: 1 !important;
-    transform: none !important;
+    animation: none !important;
   }
 
   /* Navbar fixes */
@@ -1608,20 +1563,9 @@ textarea.field-input { min-height: 140px; resize: vertical; }
     padding: 8px;
   }
 
-  /* Glass card on mobile */
-  .glass-card {
-    border-radius: 14px !important;
-  }
-
   /* Stat numbers — scale down */
   .stat-num {
     font-size: clamp(36px, 9vw, 60px) !important;
-  }
-
-  /* Industry card inner content */
-  .industry-card-image ~ .p-8,
-  .tilt-inner > div > .p-8 {
-    padding: 14px !important;
   }
 
   /* Chip tags — smaller on mobile */
@@ -1651,9 +1595,9 @@ textarea.field-input { min-height: 140px; resize: vertical; }
 }
 
 /* =========================================================
-   TABLET RESPONSIVENESS - Medium devices (max-width: 768px)
+   TABLET RESPONSIVENESS - Medium devices (641px – 768px)
    ========================================================= */
-@media (max-width: 768px) {
+@media (min-width: 641px) and (max-width: 768px) {
   .service-card-bg {
     width: 120px;
     height: 110px;
@@ -1670,10 +1614,6 @@ textarea.field-input { min-height: 140px; resize: vertical; }
 
   .grid {
     gap: 14px !important;
-  }
-
-  .card {
-    padding: 18px !important;
   }
 
   .gap-10 {

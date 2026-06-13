@@ -5,7 +5,7 @@ export default function MagneticButton({
   children,
   strength = 0.4,
   radius = 80,
-  variant = 'primary',
+  variant = '',
   size = 'md',
   type,
   disabled,
@@ -59,7 +59,8 @@ export default function MagneticButton({
     lg: 'h-14 px-12 text-lg rounded-full',
   }
 
-  // Use motion.button when type="submit" or type="button", otherwise motion.div
+  // Only apply variant/size styling when an explicit named variant is provided
+  const hasVariant = Boolean(variant && variantClasses[variant])
   const isNativeButton = type === 'submit' || type === 'button'
   const MotionTag = isNativeButton ? motion.button : motion.div
 
@@ -78,16 +79,13 @@ export default function MagneticButton({
         style={{ x: rawX, y: rawY }}
         animate={{ scale: isHovered ? 1.04 : 1 }}
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-        className={`relative inline-flex items-center justify-center font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 overflow-hidden ${variantClasses[variant] || ''} ${sizeClasses[size] || ''} ${className}`}
+        className={hasVariant
+          ? `relative inline-flex items-center justify-center font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 overflow-hidden ${variantClasses[variant]} ${sizeClasses[size] || ''} ${className}`
+          : `inline-flex items-center ${className}`}
       >
         <motion.span
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.25 }}
-          className="pointer-events-none absolute inset-0 rounded-full bg-white/10"
-        />
-        <motion.span
           style={{ x: textX, y: textY }}
-          className="relative z-10 flex items-center gap-2"
+          className={hasVariant ? 'relative z-10 flex items-center gap-2' : 'contents'}
         >
           {children}
         </motion.span>

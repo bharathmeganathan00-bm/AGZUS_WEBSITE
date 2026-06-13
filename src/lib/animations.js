@@ -153,15 +153,23 @@ export function initScrollText() {
       const total = r.height - vh
       if (total <= 0) return
       const p = Math.max(0, Math.min(1, -r.top / total))
-      const t = Math.max(0, Math.min(1, p / 0.5))
-      const factor = 1 - t
+
+      // Phase 1 (p 0→0.45): letters spread apart → assemble
+      const assembleT = Math.max(0, Math.min(1, p / 0.45))
+      const factor = 1 - assembleT
+
+      // Phase 2 (p 0.6→1): assembled text fades out smoothly
+      const fadeOut = Math.max(0, Math.min(1, (p - 0.6) / 0.4))
+
       const vw = window.innerWidth
       const spread = center > 0 ? (vw * 0.28) / center : 0
       chars.forEach((ch, i) => {
         const d = i - center
         const x = d * spread * factor
         ch.style.transform = `translate3d(${x}px, 0, 0)`
-        ch.style.opacity = factor > 0 ? String(1 - factor * 0.4) : '1'
+        // During spread: slight opacity fade; when assembled: full opacity then fade out
+        const baseOpacity = factor > 0 ? 1 - factor * 0.4 : 1
+        ch.style.opacity = String(baseOpacity * (1 - fadeOut))
       })
     }
 

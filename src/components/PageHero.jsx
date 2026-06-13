@@ -6,7 +6,7 @@ export default function PageHero({ eyebrow, title, subtitle, gradient }) {
   useHeroTubes(canvasRef)
 
   return (
-    <section className="theme-dark relative w-full max-w-[1400px] mx-auto rounded-[48px] overflow-hidden border border-white/[0.06] shadow-[0_60px_120px_-30px_rgba(0,0,0,0.6)]">
+    <section className="theme-dark relative w-full max-w-[1400px] mx-auto rounded-[24px] sm:rounded-[36px] md:rounded-[48px] overflow-hidden border border-white/[0.06] shadow-[0_60px_120px_-30px_rgba(0,0,0,0.6)]">
       <div className="hero-tubes-wrap">
         <canvas ref={canvasRef} className="hero-tubes-canvas" />
       </div>

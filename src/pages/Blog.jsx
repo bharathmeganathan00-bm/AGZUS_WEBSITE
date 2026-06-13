@@ -87,7 +87,7 @@ export default function Blog() {
 
       {/* NEWSLETTER */}
       <section className="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
-        <div className="reveal relative rounded-[40px] overflow-hidden border border-white/[0.06] bg-[var(--bg-card)] p-10 md:p-16">
+        <div className="reveal relative rounded-[20px] sm:rounded-[32px] md:rounded-[40px] overflow-hidden border border-white/[0.06] bg-[var(--bg-card)] p-6 sm:p-10 md:p-16">
           <div className="aurora" />
           <div className="relative grid md:grid-cols-2 gap-10 items-center">
             <div>

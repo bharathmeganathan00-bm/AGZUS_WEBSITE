@@ -63,7 +63,7 @@ export default function Solutions() {
             A library of opinionated starting points — proven across deployments, shipped open and bent to fit your stack. Days saved, not weeks.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {accelerators.map((acc, i) => (
             <div key={acc.title} className={`reveal${i % 2 !== 0 ? ` delay-${i % 2 * 100}` : ''} card-glow p-10`}>
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--cyan)] mb-4">/ Accelerator</div>

@@ -54,7 +54,7 @@ export default function CaseStudies() {
 
       {/* TESTIMONIAL */}
       <section className="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
-        <div className="reveal card overflow-hidden rounded-[40px] px-8 md:px-16 py-16 md:py-20 relative">
+        <div className="reveal card overflow-hidden rounded-[20px] sm:rounded-[32px] md:rounded-[40px] px-5 sm:px-8 md:px-16 py-10 sm:py-16 md:py-20 relative">
           <div className="aurora" />
           <div className="absolute inset-0 bg-grid bg-grid-fade opacity-30" />
           <div className="relative max-w-[820px]">

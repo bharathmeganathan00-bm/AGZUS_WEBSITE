@@ -47,10 +47,10 @@ export default function Careers() {
 
       {/* BENEFITS */}
       <section className="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
-        <div className="reveal card overflow-hidden rounded-[40px] px-8 md:px-16 py-16">
+        <div className="reveal card overflow-hidden rounded-[20px] sm:rounded-[32px] md:rounded-[40px] px-5 sm:px-8 md:px-16 py-10 sm:py-16">
           <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--cyan)]">/ 02 — Benefits</div>
           <h2 className="font-display text-[36px] md:text-[48px] font-medium tracking-tight text-white mt-3 leading-[1.05] max-w-[640px]">A workplace tuned for long careers.</h2>
-          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map(b => (
               <div key={b.title}>
                 <div className="w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center text-[var(--red)] bg-white/[0.03]">

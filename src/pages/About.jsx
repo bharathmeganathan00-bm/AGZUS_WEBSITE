@@ -56,19 +56,19 @@ export default function About() {
               <div key={t.year} className="reveal grid md:grid-cols-2 gap-6 md:gap-16 items-start relative">
                 {t.side === 'left' ? (
                   <>
-                    <div className="md:text-right md:pr-12">
+                    <div className="pl-10 md:pl-0 md:text-right md:pr-12">
                       <div className="font-mono text-[11px] uppercase tracking-[0.22em]" style={{ color: t.color }}>{t.year}</div>
                       <h4 className="font-display text-[24px] font-medium text-white mt-2">{t.title}</h4>
                       <p className="mt-2 text-[13.5px] text-slate-400 leading-relaxed">{t.desc}</p>
                     </div>
                     <div className="absolute left-4 md:left-1/2 -translate-x-1/2 mt-2 w-3 h-3 rounded-full ring-4 ring-[var(--bg-deep)]" style={{ background: t.color }} />
-                    <div />
+                    <div className="hidden md:block" />
                   </>
                 ) : (
                   <>
-                    <div />
+                    <div className="hidden md:block" />
                     <div className="absolute left-4 md:left-1/2 -translate-x-1/2 mt-2 w-3 h-3 rounded-full ring-4 ring-[var(--bg-deep)]" style={{ background: t.color }} />
-                    <div className="md:pl-12">
+                    <div className="pl-10 md:pl-12">
                       <div className="font-mono text-[11px] uppercase tracking-[0.22em]" style={{ color: t.color }}>{t.year}</div>
                       <h4 className="font-display text-[24px] font-medium text-white mt-2">{t.title}</h4>
                       <p className="mt-2 text-[13.5px] text-slate-400 leading-relaxed">{t.desc}</p>
@@ -89,7 +89,7 @@ export default function About() {
             Operators who have <span className="gradient-text-red">been on your side of the table.</span>
           </h2>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
           {team.map((m, i) => (
             <div key={m.name} className={`reveal delay-${(i + 1) * 100} tilt card-glow p-6`}>
               <div className="tilt-inner">
@@ -105,7 +105,7 @@ export default function About() {
 
       {/* STATS */}
       <section className="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
-        <div className="relative card overflow-hidden rounded-[40px] px-8 md:px-16 py-16 md:py-20">
+        <div className="relative card overflow-hidden rounded-[20px] sm:rounded-[32px] md:rounded-[40px] px-5 sm:px-8 md:px-16 py-10 sm:py-16 md:py-20">
           <div className="aurora" />
           <div className="absolute inset-0 bg-grid bg-grid-fade opacity-40" />
           <div className="relative reveal grid grid-cols-2 md:grid-cols-4 gap-10">
