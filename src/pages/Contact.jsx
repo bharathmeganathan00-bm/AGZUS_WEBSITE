@@ -253,10 +253,77 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* MAP */}
+      <section className="relative w-full max-w-[1400px] mx-auto mt-16 px-4 md:px-6">
+        <div className="reveal mb-8">
+          <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--red)]">/ 02 — Location</div>
+          <h2 className="font-display text-[40px] md:text-[56px] font-medium tracking-tight text-white mt-3 leading-[1.05]">
+            Find us on <span className="gradient-text-cyan">the map.</span>
+          </h2>
+        </div>
+        <div className="reveal grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Map iframe */}
+          <div className="lg:col-span-2 rounded-[24px] overflow-hidden border border-white/[0.08] shadow-[0_4px_28px_-8px_rgba(0,0,0,0.4)]">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=79.8020%2C11.9284%2C79.8520%2C11.9784&layer=mapnik&marker=11.9534%2C79.8270"
+              width="100%"
+              height="420"
+              style={{ border: 0, display: 'block' }}
+              allowFullScreen
+              loading="lazy"
+              title="AGZUS Office Location – Puducherry"
+            />
+          </div>
+          {/* Address card */}
+          <div className="card-glow p-7 rounded-[24px] flex flex-col gap-5">
+            <div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--red)] mb-4">HQ · Puducherry</div>
+              <div className="text-[14.5px] text-slate-300 leading-relaxed">
+                NO.1, Main Rd, Mettupalayam<br />
+                Marie Oulgaret<br />
+                Puducherry — 605009<br />
+                India
+              </div>
+              <div className="mt-6 space-y-3">
+                <div className="flex items-center gap-2.5 text-[13px] text-slate-400">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 text-slate-500">
+                    <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                  </svg>
+                  Mon – Fri · 09:30 – 19:00 IST
+                </div>
+                <div className="flex items-center gap-2.5 text-[13px] text-slate-400">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 text-slate-500">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.84 13.5 19.79 19.79 0 0 1 1.77 5 2 2 0 0 1 3.77 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 10.91A16 16 0 0 0 13.08 15.9l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 17.21v-.29"/>
+                  </svg>
+                  {contactInfo.phone}
+                </div>
+                <div className="flex items-center gap-2.5 text-[13px] text-slate-400">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 text-slate-500">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  {contactInfo.email}
+                </div>
+              </div>
+            </div>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/[0.06] border border-white/[0.1] text-[13px] font-semibold text-white hover:bg-white/[0.1] hover:border-[var(--red)]/40 hover:text-[var(--red)] transition-all"
+            >
+              Open in Google Maps
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
         <div className="reveal mb-12">
-          <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--red)]">/ 02 — FAQ</div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--red)]">/ 03 — FAQ</div>
           <h2 className="font-display text-[40px] md:text-[56px] font-medium tracking-tight text-white mt-3 max-w-[820px] leading-[1.05]">Common questions.</h2>
         </div>
         <div className="grid md:grid-cols-2 gap-x-10 gap-y-1 max-w-[1100px]">

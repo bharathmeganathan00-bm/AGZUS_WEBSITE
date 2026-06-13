@@ -553,6 +553,12 @@ body .border-white\/30        { border-color: var(--u-border-strong); }
   100% { left: 140%; }
 }
 
+@keyframes work-card-shine {
+  0%   { left: -60%; opacity: 0; }
+  20%  { opacity: 1; }
+  100% { left: 130%; opacity: 0; }
+}
+
 @keyframes cardBorderMove {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 150% 50%; }
