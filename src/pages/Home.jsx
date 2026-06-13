@@ -38,7 +38,7 @@ export default function Home() {
 
         <div className="anim-fade-up delay-100 relative z-20 px-8 md:px-16 pt-10 flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.18em] text-slate-400">
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--red)] pulse-dot" />
-          <span>AGZUS / ats.systems / v2026.05</span>
+          <span>AG<span className="text-[var(--red)]">Z</span>US / ats.systems / v2026.05</span>
           <span className="hidden md:inline mx-2 text-slate-700">•</span>
           <span className="hidden md:inline">Engineering tomorrow's enterprise, today.</span>
         </div>

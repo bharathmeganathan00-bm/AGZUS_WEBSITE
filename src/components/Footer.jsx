@@ -11,7 +11,7 @@ export default function Footer() {
               <img src="/logo.png" alt="AGZUS" className="w-full h-full object-contain" />
             </div>
             <div>
-              <div className="font-display text-white text-[15px] font-medium">AGZUS</div>
+              <div className="font-display text-white text-[15px] font-medium">AG<span className="text-[var(--red)]">Z</span>US</div>
               <div className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-slate-500">Technology Solutions</div>
             </div>
           </div>
