@@ -12,8 +12,8 @@ gsap.registerPlugin(ScrollTrigger)
 // ── Update WA_NUMBER with your actual WhatsApp number (country code + number, no +) ──
 const WA_NUMBER = '919876543210'
 
-const tamilMsg   = encodeURIComponent('வணக்கம் AGZUS Team, ATS Software demo வேண்டும். தமிழில் விளக்க முடியுமா?')
-const englishMsg = encodeURIComponent('Hi AGZUS Team, I want a demo for ATS Software. Please explain in English.')
+const tamilMsg   = encodeURIComponent('வணக்கம் AGZUS Team, ATS Software டெமோ வேண்டும். தமிழ் மொழியில் முழுமையாக விளக்க முடியுமா?')
+const englishMsg = encodeURIComponent('Hi AGZUS Team, I want an ATS Software demo. Please explain in English.')
 const ctaMsg     = encodeURIComponent('Hi AGZUS Team, I want to know more about ATS Software.')
 
 const ChevronRight = () => (
@@ -705,16 +705,16 @@ export default function OurProducts() {
           <div className="aurora" />
           <div className="absolute inset-0 bg-grid bg-grid-fade opacity-20" />
           <div className="relative z-10">
-            <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--red)] mb-4">/ 04 — Language Support</div>
+            <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--red)] mb-4">/ 04 — மொழி ஆதரவு</div>
             <h2 className="font-display text-[24px] sm:text-[30px] md:text-[40px] lg:text-[52px] font-medium tracking-tight text-white leading-[1.05]">
               Demo Available in{' '}
-              <span className="gradient-text-red">Tamil &amp; English</span>
+              <span className="gradient-text-red">தமிழ் &amp; English</span>
             </h2>
             <p className="mt-5 sm:mt-6 max-w-[640px] mx-auto text-[13.5px] sm:text-[15px] md:text-[16px] text-slate-300 leading-relaxed">
-              We provide a complete live demo and explanation in both Tamil and English, so you can understand every feature clearly before using the software.
+              We provide a complete live demo and explanation in both தமிழ் and English, so you can understand every feature clearly before using the software.
             </p>
             <p className="mt-3 max-w-[560px] mx-auto text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
-              உங்கள் வசதிக்காக, நாங்கள் தமிழிலும் ஆங்கிலத்திலும் டெமோ மற்றும் விளக்கத்தை வழங்குகிறோம்.
+              உங்கள் வசதிக்காக, நாங்கள் தமிழ் மற்றும் English ஆகிய இரண்டு மொழிகளிலும் முழுமையான டெமோ மற்றும் விளக்கத்தை வழங்குகிறோம். ATS Software-இன் ஒவ்வொரு அம்சத்தையும் எளிமையாகவும் தெளிவாகவும் விளக்கித் தருகிறோம்.
             </p>
             <div className="mt-7 sm:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
@@ -723,7 +723,7 @@ export default function OurProducts() {
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto btn-primary inline-flex items-center justify-center gap-2"
               >
-                <WhatsAppIcon /> Book Tamil Demo
+                <WhatsAppIcon /> Book தமிழ் Demo
               </a>
               <a
                 href={`https://wa.me/${WA_NUMBER}?text=${englishMsg}`}
