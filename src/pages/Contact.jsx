@@ -75,6 +75,38 @@ export default function Contact() {
     } catch {
       setStatus('error')
     }
+
+    // Save to localStorage so admin panel can show it (works without admin server)
+    try {
+      const stored = JSON.parse(localStorage.getItem('agzus_messages') || '[]')
+      stored.unshift({
+        id:          Date.now().toString(),
+        date:        new Date().toISOString(),
+        followedUp:  false,
+        notes:       '',
+        name:        data.name,
+        email:       data.email,
+        phone:       data.mobile || '',
+        company:     data.company || '',
+        services:    data.services,
+        message:     data.message,
+      })
+      localStorage.setItem('agzus_messages', JSON.stringify(stored))
+    } catch {}
+
+    // Also try admin server if running locally
+    fetch('http://localhost:7642/api/messages', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:     data.name,
+        email:    data.email,
+        phone:    data.mobile || '',
+        company:  data.company || '',
+        services: data.services,
+        message:  data.message,
+      }),
+    }).catch(() => {})
   }
 
   const reset = () => {

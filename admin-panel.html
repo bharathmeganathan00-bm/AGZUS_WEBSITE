@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AGZUS Admin</title>
+<style>
+:root {
+  --bg:       #050917;
+  --card:     #0a1225;
+  --card2:    #0e1830;
+  --red:      #ef4444;
+  --cyan:     #0ea5e9;
+  --green:    #22c55e;
+  --orange:   #fb923c;
+  --border:   rgba(255,255,255,0.08);
+  --text:     #e2e8f0;
+  --muted:    #64748b;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;}
+input,button,textarea{font-family:inherit;}
+code{font-family:monospace;background:rgba(255,255,255,0.06);padding:1px 5px;border-radius:4px;font-size:0.9em;}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:3px;}
+
+/* ── LOGIN ─────────────────────────────────────────────────────────────── */
+#login-screen{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.login-box{
+  background:var(--card);border:1px solid var(--border);border-radius:18px;
+  padding:40px 36px;width:100%;max-width:380px;
+}
+.login-eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--red);font-family:monospace;margin-bottom:10px;}
+.login-title{font-size:26px;font-weight:700;color:#fff;margin-bottom:4px;}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:30px;}
+.field{margin-bottom:14px;}
+.field label{display:block;font-size:11px;letter-spacing:.06em;color:var(--muted);margin-bottom:5px;text-transform:uppercase;}
+.field input{
+  width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);
+  border-radius:9px;padding:10px 14px;color:#fff;font-size:14px;outline:none;transition:border-color .2s;
+}
+.field input:focus{border-color:var(--red);}
+.btn-login{
+  width:100%;background:var(--red);border:none;border-radius:9px;padding:12px;
+  color:#fff;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s;margin-top:6px;
+}
+.btn-login:hover{opacity:.88;}
+.login-err{font-size:12px;color:var(--red);margin-top:8px;min-height:18px;}
+
+/* ── TOPBAR ─────────────────────────────────────────────────────────────── */
+#admin{display:none;flex-direction:column;min-height:100vh;}
+#admin.on{display:flex;}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:13px 28px;border-bottom:1px solid var(--border);background:var(--card);
+  position:sticky;top:0;z-index:10;flex-wrap:wrap;
+}
+.brand{font-family:monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);}
+.tab-nav{display:flex;gap:3px;}
+.tab-btn{
+  padding:6px 18px;border-radius:7px;border:none;background:transparent;
+  color:var(--muted);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;
+}
+.tab-btn.on{background:rgba(239,68,68,.12);color:#fff;}
+.tab-btn:hover:not(.on){color:#fff;}
+.logout{
+  padding:6px 14px;border-radius:7px;border:1px solid var(--border);background:transparent;
+  color:var(--muted);font-size:12px;cursor:pointer;transition:all .15s;
+}
+.logout:hover{border-color:var(--red);color:var(--red);}
+
+/* ── BODY ───────────────────────────────────────────────────────────────── */
+.body{flex:1;padding:30px 28px;max-width:1120px;margin:0 auto;width:100%;}
+.pane{display:none;}
+.pane.on{display:block;}
+
+/* ── SECTION ────────────────────────────────────────────────────────────── */
+.sec{margin-bottom:36px;}
+.sec-label{font-family:monospace;font-size:10px;text-transform:uppercase;letter-spacing:.22em;color:var(--cyan);margin-bottom:6px;}
+.sec-h{font-size:19px;font-weight:700;color:#fff;margin-bottom:3px;}
+.sec-sub{font-size:13px;color:var(--muted);margin-bottom:16px;}
+
+/* ── VIDEO CARD ─────────────────────────────────────────────────────────── */
+.video-card{
+  background:var(--card);border:1px solid var(--border);border-radius:13px;
+  padding:18px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.vid-icon{
+  width:42px;height:42px;border-radius:10px;flex-shrink:0;
+  background:rgba(14,165,233,.1);border:1px solid rgba(14,165,233,.2);
+  display:flex;align-items:center;justify-content:center;color:var(--cyan);
+}
+.vid-name{font-size:14px;color:#fff;font-weight:600;}
+.vid-size{font-size:12px;color:var(--muted);margin-top:2px;}
+.video-card .actions{display:flex;gap:8px;align-items:center;margin-left:auto;}
+
+/* ── BADGES ─────────────────────────────────────────────────────────────── */
+.badge{
+  display:inline-flex;align-items:center;gap:4px;padding:3px 10px;
+  border-radius:20px;font-size:11px;font-weight:600;
+}
+.badge-g{background:rgba(34,197,94,.12);color:var(--green);}
+.badge-o{background:rgba(251,146,60,.12);color:var(--orange);}
+.badge-r{background:rgba(239,68,68,.12);color:var(--red);}
+
+/* ── BUTTONS ─────────────────────────────────────────────────────────────── */
+.btn{
+  padding:8px 16px;border-radius:8px;border:1px solid var(--border);
+  background:rgba(255,255,255,.04);color:#fff;font-size:13px;font-weight:500;
+  cursor:pointer;transition:all .15s;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;
+}
+.btn:hover{border-color:var(--cyan);color:var(--cyan);}
+.btn-red{background:var(--red);border-color:var(--red);color:#fff;font-weight:700;}
+.btn-red:hover{opacity:.88;border-color:var(--red);color:#fff;}
+.btn-add{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.25);color:var(--red);font-weight:700;}
+.btn-add:hover{background:rgba(239,68,68,.18);border-color:rgba(239,68,68,.4);color:var(--red);}
+
+/* ── SCREENSHOTS GRID ───────────────────────────────────────────────────── */
+.shot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;}
+.shot-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;transition:border-color .15s;
+}
+.shot-card:hover{border-color:rgba(255,255,255,.15);}
+.shot-thumb{width:100%;aspect-ratio:16/9;background:#07101f;position:relative;overflow:hidden;}
+.shot-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.shot-placeholder{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:6px;color:rgba(255,255,255,.12);font-size:11px;
+  font-family:monospace;text-transform:uppercase;letter-spacing:.1em;
+}
+.shot-foot{padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:6px;}
+.shot-name{font-size:12px;font-weight:700;color:#fff;}
+.shot-status{font-size:11px;margin-top:1px;}
+.shot-actions{display:flex;gap:5px;}
+.icon-btn{
+  width:28px;height:28px;border-radius:6px;border:1px solid var(--border);
+  background:transparent;display:flex;align-items:center;justify-content:center;
+  color:var(--muted);cursor:pointer;transition:all .15s;
+}
+.icon-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+.icon-btn.del:hover{border-color:var(--red);color:var(--red);}
+
+/* ── BUILD BOX ──────────────────────────────────────────────────────────── */
+.build-box{
+  background:var(--card);border:1px solid var(--border);border-radius:13px;
+  padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.build-title{font-size:15px;color:#fff;font-weight:700;}
+.build-desc{font-size:13px;color:var(--muted);margin-top:3px;}
+.build-log{
+  display:none;width:100%;margin-top:14px;background:#020812;border:1px solid var(--border);
+  border-radius:8px;padding:14px 16px;font-family:monospace;font-size:12px;color:var(--green);
+  white-space:pre-wrap;max-height:220px;overflow-y:auto;
+}
+
+/* ── MESSAGES ───────────────────────────────────────────────────────────── */
+.msgs-hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+.stats{display:flex;gap:8px;flex-wrap:wrap;}
+.stat{
+  padding:4px 14px;border-radius:20px;font-size:12px;font-weight:600;
+  border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--muted);
+}
+.stat span{color:#fff;margin-left:4px;}
+.filters{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+.fil{
+  padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;
+  color:var(--muted);font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;
+}
+.fil.on{border-color:var(--cyan);color:var(--cyan);background:rgba(14,165,233,.08);}
+.msg-list{display:flex;flex-direction:column;gap:10px;}
+.msg-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:16px 18px;transition:border-color .15s;
+}
+.msg-card:hover{border-color:rgba(255,255,255,.13);}
+.msg-card.done{opacity:.55;}
+.msg-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px;}
+.msg-from{font-size:14px;font-weight:700;color:#fff;}
+.msg-contact{font-size:12px;color:var(--cyan);margin-top:2px;}
+.msg-date{font-size:11px;color:var(--muted);font-family:monospace;white-space:nowrap;text-align:right;}
+.msg-meta{font-size:12px;color:var(--muted);margin-bottom:6px;}
+.msg-body{font-size:13px;color:#94a3b8;line-height:1.55;}
+.msg-note-text{font-size:12px;color:var(--muted);font-style:italic;margin-top:6px;}
+.msg-actions{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.btn-sm{
+  padding:5px 12px;border-radius:6px;border:1px solid var(--border);background:transparent;
+  color:var(--muted);font-size:12px;cursor:pointer;transition:all .15s;
+}
+.btn-sm:hover{border-color:var(--cyan);color:var(--cyan);}
+.btn-sm.green-out{border-color:rgba(34,197,94,.3);color:var(--green);background:rgba(34,197,94,.06);}
+.btn-sm.del-out{border-color:transparent;}
+.btn-sm.del-out:hover{border-color:var(--red);color:var(--red);}
+.note-input{
+  flex:1;min-width:150px;max-width:260px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;
+  padding:5px 10px;color:#fff;font-size:12px;outline:none;
+}
+.note-input:focus{border-color:var(--cyan);}
+.empty{text-align:center;padding:52px 20px;color:var(--muted);font-size:14px;}
+
+/* ── MODAL ──────────────────────────────────────────────────────────────── */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;
+  align-items:center;justify-content:center;z-index:100;padding:20px;
+}
+.overlay.on{display:flex;}
+.modal{
+  background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:18px;
+  padding:30px;width:100%;max-width:480px;max-height:92vh;overflow-y:auto;
+}
+.modal-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:22px;}
+.modal textarea{
+  width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:9px;
+  padding:10px 14px;color:#fff;font-size:14px;outline:none;resize:vertical;
+}
+.modal textarea:focus{border-color:var(--red);}
+.modal-foot{display:flex;gap:10px;margin-top:22px;}
+.btn-cancel{flex:1;padding:11px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;cursor:pointer;}
+.btn-save{flex:1;padding:11px;border-radius:8px;border:none;background:var(--red);color:#fff;font-size:13px;font-weight:700;cursor:pointer;}
+.btn-save:hover{opacity:.88;}
+
+/* ── TOAST ──────────────────────────────────────────────────────────────── */
+.toast{
+  position:fixed;bottom:24px;right:24px;background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:12px 18px;font-size:13px;color:#fff;z-index:200;
+  opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none;
+}
+.toast.on{opacity:1;transform:translateY(0);}
+.toast.ok{border-color:rgba(34,197,94,.35);}
+.toast.err{border-color:rgba(239,68,68,.35);}
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ──────────────────────────────────────────────────────────────── -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-eyebrow">AGZUS Technology</div>
+    <div class="login-title">Admin Panel</div>
+    <div class="login-sub">Sign in to manage your website</div>
+    <form id="login-form">
+      <div class="field"><label>Password</label>
+        <input type="password" id="pw" placeholder="Enter admin password" autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn-login">Sign In</button>
+      <div id="login-err" class="login-err"></div>
+    </form>
+  </div>
+</div>
+
+<!-- ── ADMIN ───────────────────────────────────────────────────────────────── -->
+<div id="admin">
+  <div class="topbar">
+    <div class="brand">AGZUS Admin</div>
+    <div class="tab-nav">
+      <button class="tab-btn on" data-tab="media">📁 Media</button>
+      <button class="tab-btn"    data-tab="messages">💬 Messages</button>
+    </div>
+    <button class="logout" id="logout-btn">Log Out</button>
+  </div>
+
+  <div class="body">
+
+    <!-- MEDIA TAB -->
+    <div class="pane on" id="tab-media">
+
+      <!-- Tutorial Video -->
+      <div class="sec">
+        <div class="sec-label">/ Tutorial Video</div>
+        <div class="sec-h">ATS Software Tutorial Video</div>
+        <div class="sec-sub">Uploaded as <code>ats-software-tutorial.mp4</code> — shown on the Our Products page.</div>
+        <div class="video-card">
+          <div class="vid-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
+          <div>
+            <div class="vid-name">ats-software-tutorial.mp4</div>
+            <div class="vid-size" id="vid-size">Checking...</div>
+          </div>
+          <div id="vid-badge"></div>
+          <div class="actions">
+            <label class="btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Upload / Replace
+              <input type="file" accept="video/*" style="display:none" onchange="uploadVideo(this)">
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screenshots -->
+      <div class="sec">
+        <div class="sec-label">/ Product Screenshots</div>
+        <div class="sec-h">Upload Screenshots</div>
+        <div class="sec-sub">Each slot maps to a screen in the Software Screenshots section of the Our Products page.</div>
+        <div class="shot-grid" id="shot-grid"></div>
+      </div>
+
+      <!-- Build -->
+      <div class="sec">
+        <div class="sec-label">/ Publish</div>
+        <div class="build-box">
+          <div>
+            <div class="build-title">Build & Publish Website</div>
+            <div class="build-desc">After uploading files, run a build to update the deployed site.</div>
+          </div>
+          <button class="btn btn-red" id="build-btn" onclick="runBuild()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Build Website
+          </button>
+        </div>
+        <div class="build-log" id="build-log"></div>
+      </div>
+    </div>
+
+    <!-- MESSAGES TAB -->
+    <div class="pane" id="tab-messages">
+      <div class="msgs-hdr">
+        <div class="stats">
+          <div class="stat">Total <span id="st-total">0</span></div>
+          <div class="stat">New <span id="st-new">0</span></div>
+          <div class="stat">Followed Up <span id="st-done">0</span></div>
+        </div>
+        <button class="btn btn-add" onclick="openModal()">+ Add Message</button>
+      </div>
+      <div class="filters">
+        <button class="fil on" data-f="all">All</button>
+        <button class="fil" data-f="new">New</button>
+        <button class="fil" data-f="done">Followed Up</button>
+      </div>
+      <div class="msg-list" id="msg-list"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Add Message Modal -->
+<div class="overlay" id="modal">
+  <div class="modal">
+    <div class="modal-title">Log Client Message</div>
+    <div class="field"><label>Name</label><input type="text" id="m-name" placeholder="Client name"></div>
+    <div class="field"><label>Email</label><input type="text" id="m-email" placeholder="Email address"></div>
+    <div class="field"><label>Phone</label><input type="text" id="m-phone" placeholder="Phone / WhatsApp number"></div>
+    <div class="field"><label>Company</label><input type="text" id="m-company" placeholder="Company name (optional)"></div>
+    <div class="field"><label>Services Interested</label><input type="text" id="m-services" placeholder="e.g. ATS Software, Demo Request"></div>
+    <div class="field">
+      <label>Message / Notes</label>
+      <textarea id="m-message" rows="4" placeholder="What did the client say or enquire about?"></textarea>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save"   onclick="saveMsg()">Save Message</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+const API = 'http://localhost:7642'
+let TOKEN  = sessionStorage.getItem('agzus_token') || ''
+let msgs   = []
+let filter = 'all'
+
+const SLOTS = [
+  { id:'dashboard',  label:'Dashboard'       },
+  { id:'pos',        label:'POS / Cashier'   },
+  { id:'invoices',   label:'Invoices'        },
+  { id:'inventory',  label:'Inventory'       },
+  { id:'customers',  label:'Customers'       },
+  { id:'employees',  label:'Employees'       },
+  { id:'payroll',    label:'Payroll'         },
+  { id:'reports',    label:'Reports'         },
+]
+
+// ── Auth ─────────────────────────────────────────────────────────────────────
+const hdr = () => ({ 'Content-Type':'application/json', 'x-admin-token': TOKEN })
+
+document.getElementById('login-form').addEventListener('submit', async e => {
+  e.preventDefault()
+  const pw = document.getElementById('pw').value
+  document.getElementById('login-err').textContent = ''
+  try {
+    const r = await fetch(`${API}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({ password: pw }),
+    })
+    if (r.ok) {
+      TOKEN = pw
+      sessionStorage.setItem('agzus_token', pw)
+      showAdmin()
+    } else {
+      document.getElementById('login-err').textContent = 'Wrong password.'
+    }
+  } catch {
+    document.getElementById('login-err').textContent = 'Cannot connect to admin server. Is it running?'
+  }
+})
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+  sessionStorage.removeItem('agzus_token')
+  TOKEN = ''
+  document.getElementById('admin').classList.remove('on')
+  document.getElementById('login-screen').style.display = 'flex'
+})
+
+function showAdmin() {
+  document.getElementById('login-screen').style.display = 'none'
+  document.getElementById('admin').classList.add('on')
+  loadMedia()
+  loadMsgs()
+}
+
+if (TOKEN) showAdmin()
+
+// ── Tabs ─────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.tab-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('on'))
+    document.querySelectorAll('.pane').forEach(x => x.classList.remove('on'))
+    b.classList.add('on')
+    document.getElementById('tab-' + b.dataset.tab).classList.add('on')
+  })
+})
+
+document.querySelectorAll('.fil').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.fil').forEach(x => x.classList.remove('on'))
+    b.classList.add('on')
+    filter = b.dataset.f
+    renderMsgs()
+  })
+})
+
+// ── Media ─────────────────────────────────────────────────────────────────────
+let images = []
+
+async function loadMedia() {
+  try {
+    const r = await fetch(`${API}/api/video/status`, { headers: hdr() })
+    const d = await r.json()
+    document.getElementById('vid-badge').innerHTML =
+      d.exists
+        ? `<span class="badge badge-g">● Uploaded</span>`
+        : `<span class="badge badge-o">● Not uploaded</span>`
+    document.getElementById('vid-size').textContent =
+      d.exists ? `${(d.size/1024/1024).toFixed(1)} MB` : 'No file found'
+  } catch { document.getElementById('vid-size').textContent = 'Server not reachable' }
+
+  try {
+    const r = await fetch(`${API}/api/images`, { headers: hdr() })
+    images = await r.json()
+    renderShots()
+  } catch {}
+}
+
+function renderShots() {
+  document.getElementById('shot-grid').innerHTML = SLOTS.map(slot => {
+    const img = images.find(f => {
+      const base = f.name.replace(/\.[^.]+$/, '')
+      return base === slot.id
+    })
+    return `
+    <div class="shot-card">
+      <div class="shot-thumb">
+        ${img
+          ? `<img src="${API}${img.url}?v=${Date.now()}" alt="${slot.label}" onerror="this.parentNode.innerHTML='<div class=shot-placeholder><svg width=24 height=24 viewBox=&quot;0 0 24 24&quot; fill=none stroke=currentColor stroke-width=1.3><rect x=3 y=3 width=18 height=18 rx=2/></svg><span>Missing</span></div>'">`
+          : `<div class="shot-placeholder">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m3 9 5-5 4 4 3-3 5 5"/></svg>
+               <span>Not uploaded</span>
+             </div>`
+        }
+      </div>
+      <div class="shot-foot">
+        <div>
+          <div class="shot-name">${slot.label}</div>
+          <div class="shot-status" style="color:${img ? 'var(--green)' : 'var(--orange)'}">
+            ${img ? '● Uploaded' : '● Missing'}
+          </div>
+        </div>
+        <div class="shot-actions">
+          <label class="icon-btn" title="${img ? 'Replace' : 'Upload'}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <input type="file" accept="image/*" style="display:none" onchange="uploadImg(this,'${slot.id}')">
+          </label>
+          ${img ? `<button class="icon-btn del" onclick="delImg('${img.name}')" title="Delete">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+          </button>` : ''}
+        </div>
+      </div>
+    </div>`
+  }).join('')
+}
+
+async function uploadImg(input, slot) {
+  if (!input.files[0]) return
+  const fd = new FormData()
+  fd.append('image', input.files[0])
+  try {
+    const r = await fetch(`${API}/api/upload/image?slot=${slot}`, {
+      method: 'POST',
+      headers: { 'x-admin-token': TOKEN },
+      body: fd,
+    })
+    if (r.ok) { toast(`✓ ${slot} uploaded`, 'ok'); loadMedia() }
+    else { toast('Upload failed', 'err') }
+  } catch { toast('Cannot reach server', 'err') }
+}
+
+async function delImg(filename) {
+  if (!confirm(`Delete ${filename}?`)) return
+  const r = await fetch(`${API}/api/image/${encodeURIComponent(filename)}`, { method:'DELETE', headers: hdr() })
+  if (r.ok) { toast('Deleted', 'ok'); loadMedia() }
+}
+
+async function uploadVideo(input) {
+  if (!input.files[0]) return
+  toast('Uploading video… please wait', '')
+  const fd = new FormData()
+  fd.append('video', input.files[0])
+  try {
+    const r = await fetch(`${API}/api/upload/video`, {
+      method: 'POST',
+      headers: { 'x-admin-token': TOKEN },
+      body: fd,
+    })
+    if (r.ok) { toast('✓ Video uploaded', 'ok'); loadMedia() }
+    else { toast('Video upload failed', 'err') }
+  } catch { toast('Cannot reach server', 'err') }
+}
+
+// ── Build ──────────────────────────────────────────────────────────────────
+async function runBuild() {
+  const btn = document.getElementById('build-btn')
+  const log = document.getElementById('build-log')
+  btn.disabled = true
+  btn.textContent = 'Building…'
+  log.style.display = 'block'
+  log.style.color = '#94a3b8'
+  log.textContent = 'Running npm run build…\n'
+  try {
+    const r = await fetch(`${API}/api/build`, { method:'POST', headers: hdr() })
+    const d = await r.json()
+    if (r.ok) {
+      log.style.color = 'var(--green)'
+      log.textContent = (d.output || 'Build successful!')
+      toast('✓ Build complete!', 'ok')
+    } else {
+      log.style.color = 'var(--red)'
+      log.textContent = d.error || 'Build failed'
+      toast('Build failed', 'err')
+    }
+  } catch {
+    log.textContent = 'Cannot reach server'
+    toast('Cannot reach server', 'err')
+  }
+  btn.disabled = false
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Build Website'
+}
+
+// ── Messages ──────────────────────────────────────────────────────────────────
+async function loadMsgs() {
+  try {
+    const r = await fetch(`${API}/api/messages`, { headers: hdr() })
+    msgs = await r.json()
+    renderMsgs()
+  } catch {}
+}
+
+function renderMsgs() {
+  const list = document.getElementById('msg-list')
+  let data = msgs
+  if (filter === 'new')  data = msgs.filter(m => !m.followedUp)
+  if (filter === 'done') data = msgs.filter(m => m.followedUp)
+
+  document.getElementById('st-total').textContent = msgs.length
+  document.getElementById('st-new').textContent   = msgs.filter(m => !m.followedUp).length
+  document.getElementById('st-done').textContent  = msgs.filter(m => m.followedUp).length
+
+  if (data.length === 0) {
+    list.innerHTML = '<div class="empty">No messages here yet.</div>'
+    return
+  }
+
+  list.innerHTML = data.map(m => {
+    const dt = new Date(m.date).toLocaleString('en-IN', {
+      day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit',
+    })
+    const contact = [m.email, m.phone].filter(Boolean).join(' · ')
+    return `
+    <div class="msg-card${m.followedUp ? ' done' : ''}">
+      <div class="msg-top">
+        <div>
+          <div class="msg-from">${x(m.name||'Unknown')}</div>
+          ${contact ? `<div class="msg-contact">${x(contact)}</div>` : ''}
+        </div>
+        <div>
+          <div class="msg-date">${dt}</div>
+          ${m.followedUp
+            ? `<span class="badge badge-g" style="margin-top:4px;float:right">✓ Done</span>`
+            : `<span class="badge badge-o" style="margin-top:4px;float:right">New</span>`}
+        </div>
+      </div>
+      ${m.company  ? `<div class="msg-meta">Company: ${x(m.company)}</div>` : ''}
+      ${m.services ? `<div class="msg-meta">Services: ${x(m.services)}</div>` : ''}
+      <div class="msg-body">${x(m.message||'—')}</div>
+      ${m.notes ? `<div class="msg-note-text">📝 ${x(m.notes)}</div>` : ''}
+      <div class="msg-actions">
+        <button class="btn-sm${m.followedUp ? ' green-out' : ''}" onclick="toggleDone('${m.id}',${!m.followedUp})">
+          ${m.followedUp ? '✓ Followed Up' : 'Mark as Followed Up'}
+        </button>
+        <input class="note-input" placeholder="Add note…" value="${x(m.notes||'')}" onblur="saveNote('${m.id}',this.value)">
+        <button class="btn-sm del-out" onclick="delMsg('${m.id}')">Delete</button>
+      </div>
+    </div>`
+  }).join('')
+}
+
+function x(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+}
+
+async function toggleDone(id, val) {
+  await fetch(`${API}/api/messages/${id}`, { method:'PATCH', headers:hdr(), body:JSON.stringify({followedUp:val}) })
+  await loadMsgs()
+}
+
+async function saveNote(id, notes) {
+  await fetch(`${API}/api/messages/${id}`, { method:'PATCH', headers:hdr(), body:JSON.stringify({notes}) })
+  const i = msgs.findIndex(m => m.id === id)
+  if (i !== -1) msgs[i].notes = notes
+}
+
+async function delMsg(id) {
+  if (!confirm('Delete this message?')) return
+  await fetch(`${API}/api/messages/${id}`, { method:'DELETE', headers:hdr() })
+  await loadMsgs()
+}
+
+function openModal()  { document.getElementById('modal').classList.add('on') }
+function closeModal() { document.getElementById('modal').classList.remove('on') }
+document.getElementById('modal').addEventListener('click', e => { if (e.target===e.currentTarget) closeModal() })
+
+async function saveMsg() {
+  const data = {
+    name:     document.getElementById('m-name').value.trim(),
+    email:    document.getElementById('m-email').value.trim(),
+    phone:    document.getElementById('m-phone').value.trim(),
+    company:  document.getElementById('m-company').value.trim(),
+    services: document.getElementById('m-services').value.trim(),
+    message:  document.getElementById('m-message').value.trim(),
+  }
+  if (!data.name && !data.message) { toast('Enter at least a name or message', 'err'); return }
+  await fetch(`${API}/api/messages`, {
+    method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data),
+  })
+  closeModal()
+  toast('✓ Message saved', 'ok')
+  document.querySelectorAll('#modal input,#modal textarea').forEach(el => el.value='')
+  await loadMsgs()
+}
+
+// ── Toast ──────────────────────────────────────────────────────────────────
+let toastTimer
+function toast(msg, type='') {
+  clearTimeout(toastTimer)
+  const el = document.getElementById('toast')
+  el.textContent = msg
+  el.className = `toast on ${type==='ok'?'ok':type==='err'?'err':''}`
+  toastTimer = setTimeout(() => el.classList.remove('on'), 3200)
+}
+</script>
+</body>
+</html>

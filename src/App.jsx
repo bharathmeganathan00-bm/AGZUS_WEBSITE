@@ -10,6 +10,9 @@ import CaseStudies from './pages/CaseStudies'
 import Blog from './pages/Blog'
 import Careers from './pages/Careers'
 import Contact from './pages/Contact'
+import MotionLab from './pages/MotionLab'
+import OurProducts from './pages/OurProducts'
+import Admin from './pages/Admin'
 
 export default function App() {
   return (
@@ -17,9 +20,14 @@ export default function App() {
       <ScrollToTop />
       <CardModalProvider>
         <div className="bg-orbs"><span></span></div>
-        <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* Admin — no navbar, standalone page */}
+          <Route path="/admin" element={<Admin />} />
+          <Route path="*" element={
+            <>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/solutions" element={<Solutions />} />
@@ -27,16 +35,21 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/motion-lab" element={<MotionLab />} />
+          <Route path="/our-products" element={<OurProducts />} />
           {/* redirect legacy .html URLs to SPA routes */}
-          <Route path="/index.html"       element={<Navigate to="/" replace />} />
-          <Route path="/about.html"       element={<Navigate to="/about" replace />} />
-          <Route path="/services.html"    element={<Navigate to="/services" replace />} />
-          <Route path="/solutions.html"   element={<Navigate to="/solutions" replace />} />
+          <Route path="/index.html"        element={<Navigate to="/" replace />} />
+          <Route path="/about.html"        element={<Navigate to="/about" replace />} />
+          <Route path="/services.html"     element={<Navigate to="/services" replace />} />
+          <Route path="/solutions.html"    element={<Navigate to="/solutions" replace />} />
           <Route path="/case-studies.html" element={<Navigate to="/case-studies" replace />} />
-          <Route path="/blog.html"        element={<Navigate to="/blog" replace />} />
-          <Route path="/careers.html"     element={<Navigate to="/careers" replace />} />
-          <Route path="/contact.html"     element={<Navigate to="/contact" replace />} />
-          <Route path="*"                 element={<Navigate to="/" replace />} />
+          <Route path="/blog.html"         element={<Navigate to="/blog" replace />} />
+          <Route path="/careers.html"      element={<Navigate to="/careers" replace />} />
+          <Route path="/contact.html"      element={<Navigate to="/contact" replace />} />
+          <Route path="*"                  element={<Navigate to="/" replace />} />
+              </Routes>
+            </>
+          } />
         </Routes>
       </CardModalProvider>
     </BrowserRouter>

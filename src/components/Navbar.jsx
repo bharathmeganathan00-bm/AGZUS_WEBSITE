@@ -8,10 +8,11 @@ const ChevronRight = () => (
 )
 
 const navLinks = [
-  { to: '/services',     label: 'Services' },
-  { to: '/solutions',    label: 'Solutions' },
-  { to: '/case-studies', label: 'Work' },
-  { to: '/about',        label: 'About' },
+  { to: '/services',      label: 'Services' },
+  { to: '/solutions',     label: 'Solutions' },
+  { to: '/our-products',  label: 'Our Products' },
+  { to: '/case-studies',  label: 'Work' },
+  { to: '/about',         label: 'About' },
 ]
 
 export default function Navbar() {

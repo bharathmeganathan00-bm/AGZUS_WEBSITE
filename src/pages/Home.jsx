@@ -253,6 +253,92 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PRODUCT PREVIEW */}
+      <section className="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
+        <div className="reveal flex items-end justify-between gap-6 mb-10">
+          <div>
+            <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--cyan)]">/ 05 — ATS Software</div>
+            <h2 className="font-display text-[40px] md:text-[56px] font-medium tracking-tight text-white mt-3 max-w-[720px] leading-[1.05]">
+              Powerful ERP built for{' '}
+              <span className="gradient-text-cyan">every business.</span>
+            </h2>
+          </div>
+          <MagneticButton>
+            <Link to="/our-products" className="hidden md:inline-flex btn-ghost">
+              Explore product <ChevronRight />
+            </Link>
+          </MagneticButton>
+        </div>
+
+        {/* Main video / dashboard preview */}
+        <Link
+          to="/our-products"
+          className="reveal block group relative overflow-hidden rounded-[20px] md:rounded-[28px] border border-white/[0.07] bg-[var(--bg-card)] shadow-[0_20px_80px_-20px_rgba(0,0,0,0.65)] cursor-pointer"
+        >
+          <div className="aspect-video relative">
+            <video
+              src="/videos/ats-software-tutorial.mp4"
+              poster="/images/products/dashboard.png"
+              muted
+              autoPlay
+              loop
+              playsInline
+              preload="none"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 transition-opacity duration-300 group-hover:from-black/30" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="flex items-center gap-3 rounded-full border border-white/30 bg-black/40 backdrop-blur-sm px-5 py-3 transition-all duration-300 group-hover:border-white/60 group-hover:bg-black/55 group-hover:scale-105 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="none">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-white">Watch Tutorial</span>
+              </div>
+            </div>
+            <div className="absolute bottom-5 left-6">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">ATS Software — Full feature walkthrough</span>
+            </div>
+          </div>
+        </Link>
+
+        {/* Screenshot thumbnails */}
+        <div className="reveal delay-200 mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
+          {[
+            { src: '/images/products/pos.png',       label: 'POS / Cashier' },
+            { src: '/images/products/invoices.png',  label: 'Invoices' },
+            { src: '/images/products/inventory.png', label: 'Inventory' },
+            { src: '/images/products/customers.png', label: 'Customers' },
+          ].map(shot => (
+            <Link
+              key={shot.label}
+              to="/our-products"
+              className="group relative overflow-hidden rounded-[14px] border border-white/[0.07] bg-[var(--bg-card)] aspect-video cursor-pointer transition-all duration-300 hover:border-[var(--cyan)]/40 hover:shadow-[0_8px_32px_rgba(14,165,233,0.15)]"
+            >
+              <img
+                src={shot.src}
+                alt={shot.label}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                onError={e => { e.target.style.opacity = '0.15' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/90">{shot.label}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Mobile CTA */}
+        <div className="reveal delay-300 mt-6 flex items-center justify-center md:hidden">
+          <MagneticButton>
+            <Link to="/our-products" className="btn-ghost">
+              Explore all features <ChevronRight />
+            </Link>
+          </MagneticButton>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="relative w-full max-w-[1400px] mx-auto mt-32 px-4 md:px-6">
         <div className="reveal relative rounded-[20px] sm:rounded-[32px] md:rounded-[40px] overflow-hidden border border-white/[0.06] bg-[var(--bg-card)] p-6 sm:p-10 md:p-16 text-center">
