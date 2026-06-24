@@ -10,7 +10,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 // ── Update WA_NUMBER with your actual WhatsApp number (country code + number, no +) ──
-const WA_NUMBER = '919876543210'
+const WA_NUMBER = '918668052762'
 
 const tamilMsg   = encodeURIComponent('வணக்கம் AGZUS Team, ATS Software டெமோ வேண்டும். தமிழ் மொழியில் முழுமையாக விளக்க முடியுமா?')
 const englishMsg = encodeURIComponent('Hi AGZUS Team, I want an ATS Software demo. Please explain in English.')
@@ -543,22 +543,6 @@ export default function OurProducts() {
         gradient="radial-gradient(circle at 70% 20%, rgba(239,68,68,0.25), transparent 50%), radial-gradient(circle at 20% 80%, rgba(14,165,233,0.18), transparent 55%), rgba(5,9,23,0.7)"
       />
 
-      {/* ── Hero CTA Buttons + Badge ──────────────────────────────────────── */}
-      <div className="reveal w-full max-w-[1400px] mx-auto mt-6 sm:mt-8 px-4 md:px-6 flex flex-col items-center gap-4">
-        <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto justify-center">
-          <a href="#tutorial-video" className="w-full sm:w-auto btn-primary inline-flex items-center justify-center gap-2">
-            <PlayIcon /> Watch Tutorial
-          </a>
-          <Link to="/contact" className="w-full sm:w-auto btn-ghost inline-flex items-center justify-center gap-1.5">
-            Request Demo <ChevronRight />
-          </Link>
-        </div>
-        <div className="flex items-center gap-2 text-[11px] sm:text-[12px] font-mono uppercase tracking-[0.18em] text-slate-500">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--red)]" />
-          Built by AGZUS Technology Solutions
-        </div>
-      </div>
-
       {/* ── Tutorial Video Section ────────────────────────────────────────── */}
       <section id="tutorial-video" className="relative w-full max-w-[1400px] mx-auto mt-14 sm:mt-20 lg:mt-32 px-4 md:px-6">
         <div className="reveal mb-8 md:mb-10 text-center">
@@ -585,6 +569,27 @@ export default function OurProducts() {
             controls
             style={{ display: 'block', width: '100%', height: '100%', objectFit: 'contain' }}
           />
+        </div>
+
+        {/* CTA buttons under video */}
+        <div className="reveal mt-6 sm:mt-8 flex flex-col items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto justify-center">
+            <a
+              href={`https://wa.me/${WA_NUMBER}?text=${tamilMsg}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto btn-primary inline-flex items-center justify-center gap-2"
+            >
+              <PlayIcon /> Watch Tutorial
+            </a>
+            <Link to="/contact" className="w-full sm:w-auto btn-ghost inline-flex items-center justify-center gap-1.5">
+              Request Demo <ChevronRight />
+            </Link>
+          </div>
+          <div className="flex items-center gap-2 text-[11px] sm:text-[12px] font-mono uppercase tracking-[0.18em] text-slate-500">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--red)]" />
+            Built by AGZUS Technology Solutions
+          </div>
         </div>
 
         {/* Tamil + English Demo Message near video */}
