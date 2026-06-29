@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import { offices, faqs, serviceChips, contactInfo } from '../data/contact'
 
 const TO_EMAIL     = 'info@agzus.com'
-const WHATSAPP_NUM = '918668052762'
+const WHATSAPP_NUM = '918015334468'
 
 function buildWhatsAppLink(data) {
   const msg = [

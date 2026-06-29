@@ -45,7 +45,7 @@ export const budgetOptions = [
 
 export const contactInfo = {
   email: 'info@agzus.com',
-  phone: '+91 8668052762',
+  phone: '+91 8015334468',
   address: 'NO.1, Main Rd, Mettupalayam, Marie Oulgaret, Puducherry, 605009',
   careersEmail: 'careers@agzus.tech',
 }

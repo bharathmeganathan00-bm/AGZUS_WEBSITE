@@ -10,7 +10,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 // ── Update WA_NUMBER with your actual WhatsApp number (country code + number, no +) ──
-const WA_NUMBER = '918668052762'
+const WA_NUMBER = '918015334468'
 
 const tamilMsg   = encodeURIComponent('வணக்கம் AGZUS Team, ATS Software டெமோ வேண்டும். தமிழ் மொழியில் முழுமையாக விளக்க முடியுமா?')
 const englishMsg = encodeURIComponent('Hi AGZUS Team, I want an ATS Software demo. Please explain in English.')
