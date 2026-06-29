@@ -2,7 +2,7 @@ export const offices = [
   {
     tag: '/ HQ',
     city: 'Puducherry',
-    address: 'NO.1, Main Rd, Mettupalayam\nMarie Oulgaret, Puducherry, 605009',
+    address: '34, Karunakara Pillai St,\nKuyavarpalayam, Puducherry, 605013',
     hours: 'Mon–Fri · 09:30 – 19:00 IST',
   },
 ]
@@ -46,6 +46,6 @@ export const budgetOptions = [
 export const contactInfo = {
   email: 'info@agzus.com',
   phone: '+91 8015334468',
-  address: 'NO.1, Main Rd, Mettupalayam, Marie Oulgaret, Puducherry, 605009',
+  address: '34, Karunakara Pillai St, Kuyavarpalayam, Puducherry, 605013',
   careersEmail: 'careers@agzus.tech',
 }

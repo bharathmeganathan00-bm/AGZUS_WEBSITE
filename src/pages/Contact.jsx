@@ -311,9 +311,9 @@ export default function Contact() {
             <div>
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--red)] mb-4">HQ · Puducherry</div>
               <div className="text-[14.5px] text-slate-300 leading-relaxed">
-                NO.1, Main Rd, Mettupalayam<br />
-                Marie Oulgaret<br />
-                Puducherry — 605009<br />
+                34, Karunakara Pillai St<br />
+                Kuyavarpalayam<br />
+                Puducherry — 605013<br />
                 India
               </div>
               <div className="mt-6 space-y-3">
