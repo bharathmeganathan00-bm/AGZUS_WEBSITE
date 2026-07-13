@@ -19,7 +19,7 @@ export default function Footer() {
             Engineering the foundation of a modern, intelligent enterprise. Designed in Bengaluru, shipped to the world.
           </p>
           <div className="mt-5 flex items-center gap-2.5">
-            <a href="https://www.linkedin.com/in/agzus-technology-solutions/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+            <a href="https://www.linkedin.com/company/agzus-technology-solutions/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
                className="w-8 h-8 rounded-lg border border-white/10 bg-white/[0.04] flex items-center justify-center text-slate-400 hover:text-white hover:border-white/20 hover:bg-white/[0.08] transition-all">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
